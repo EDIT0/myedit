@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user_itempage"
+    android:weightSum="10"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <!--<TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/nanum_gothic_bold"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                />-->
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="※ 상품리스트를 볼 수 있습니다."
+                android:textStyle="bold"
+                android:textSize="17dp"
+                android:fontFamily="@font/nanum_gothic_regular">
+            </TextView>
+
+        </LinearLayout>
+
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="85dp"
+            android:text="가격"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:fontFamily="@font/nexonregular">
+
+        </TextView>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="6.5">
+
+        <TextView
+            android:id="@+id/textView_main_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="1sp"
+            android:text=""/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:id="@+id/listView_main_list"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:weightSum="3">
+
+        <!--<androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="돌아가기"
+            android:id="@+id/layout2_b1"
+            android:textColor="@color/white"
+            android:fontFamily="@font/nanum_gothic_bold"
+            android:background="@drawable/buttonshape"
+            android:layout_marginRight="20dp"
+            android:textSize="20dp"/>-->
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/gotopocket"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:text="담기"
+            android:textSize="20dp"
+            android:fontFamily="@font/nanum_gothic_bold"
+            android:background="@drawable/buttonshape"
+            android:textColor="@color/white">
+
+        </androidx.appcompat.widget.AppCompatButton>
+    </LinearLayout>
+</LinearLayout>
