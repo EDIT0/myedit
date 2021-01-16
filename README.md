@@ -14,30 +14,39 @@
 주요 기술
 
 MySQL
+
 앱의 모든 데이터를 저장하는 공간으로 MySQL을 사용하였습니다. 무료인데다 다루기 쉬운 장점이 있어서 선정하게 되었고 PHP를 통해 앱과 통신하여 데이터를 주고 받는 역할을 합니다.
 
 PHP(JSON)
+
 PHP문을 통해 웹에 JSON 형식으로 데이터를 뿌려주어 앱에서 데이터를 주고 받을 수 있도록 해줍니다.
 
 Volley
+
 큐만 추가하면 스레드 관리를 생략해주고 통신할 수 있어서 선택
 
 HttpURLConnection
+
 구현하는데 참고하면서 만드느라 RecyclerView로 표현해주는 부분들은 AsyscTask로 UI, Thread를 관리하며 Http통신으로 구현
 
 AsyncTask
+
 스레드 통신 제어
 
 commons-net-3.7
+
 서버에 저장된 이미지 파일을 가져오기 위해 FTPClient 사용
 
 PHPMailer
+
 사용자들에게 필요한 경우 메일을 송신하기 위해 사용
 
 MessageDigest
+
 비밀번호 해시화를 위해 사용
 
 Fragment
+
 화면 재사용을 위해 User의 가게 메인과 리뷰를 보는 곳에 ViewPager와 Rider 메인 Tab 형식 구현
 
 
