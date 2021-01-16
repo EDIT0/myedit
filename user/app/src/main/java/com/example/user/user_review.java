@@ -387,7 +387,7 @@ public class user_review extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case android.R.id.home:{ // 왼쪽 상단 버튼 눌렀을 때
+            case android.R.id.home:{
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
             }
