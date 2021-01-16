@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user_forpay"
+    android:weightSum="10"
+    android:background="@color/white">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="2.5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/title1"
+            android:layout_gravity="center"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/nanum_gothic_bold"
+            />
+    </LinearLayout>-->
+
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/grey"
+        android:layout_gravity="center"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.5"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="요청사항"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:fontFamily="@font/medium">
+        </TextView>
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="요청사항 입력"
+            android:gravity="top"
+            />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pay"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nanum_gothic_regular"
+        android:text="결제하기"
+        android:textSize="25dp"
+        android:background="@drawable/buttonshape"
+        android:textColor="@color/white"
+        />
+</LinearLayout>
