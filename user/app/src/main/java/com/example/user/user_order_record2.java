@@ -1,7 +1,6 @@
 package com.example.user;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -21,15 +20,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class user_order_record2 extends Activity {
-
     Button back,b1,b2;
     TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7;
-
     String memo, items, u_address;
-
     String user_name1, user_address1, user_id1, user_address_detail1, store_name1;
     Double user_lat1, user_long1;
-
     int date1, t_price, yes_no, s_number, date;
 
 
@@ -84,8 +79,8 @@ public class user_order_record2 extends Activity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                    if(success){ //회원등록에 성공한 경우
+                    boolean success = jsonObject.getBoolean("success");
+                    if(success){
                         memo = jsonObject.getString("memo");
                         t_price = jsonObject.getInt("t_price");
                         items = jsonObject.getString("items");
@@ -110,9 +105,7 @@ public class user_order_record2 extends Activity {
                         }
 
                     }
-                    //실패한 경우
                     else{
-                        Toast.makeText(getApplicationContext(),"중복된 아이디입니다.",Toast.LENGTH_SHORT).show();
                         return;
                     }
                 } catch (JSONException e) {
@@ -121,8 +114,6 @@ public class user_order_record2 extends Activity {
 
             }
         };
-
-        //서버로 Volley를 이용해서 요청을 함
         user_order_record2_db registerRequest = new user_order_record2_db(store_name1,user_id1, date1, responseListener);
         RequestQueue queue = Volley.newRequestQueue(user_order_record2.this);
         queue.add(registerRequest);
@@ -151,8 +142,8 @@ public class user_order_record2 extends Activity {
                             public void onResponse(String response) {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response);
-                                    boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                                    if(success){ //회원등록에 성공한 경우
+                                    boolean success = jsonObject.getBoolean("success");
+                                    if(success){
                                         Intent intent = new Intent(user_order_record2.this, user_order_record.class);
                                         intent.putExtra("user_name",user_name1);
                                         intent.putExtra("user_address",user_address1);
@@ -164,7 +155,6 @@ public class user_order_record2 extends Activity {
 
                                         startActivity(intent);
                                     }
-                                    //실패한 경우
                                     else{
                                         Toast.makeText(getApplicationContext(),"주문기록 삭제 실패",Toast.LENGTH_SHORT).show();
                                         return;
@@ -175,14 +165,11 @@ public class user_order_record2 extends Activity {
 
                             }
                         };
-
-                        //서버로 Volley를 이용해서 요청을 함
                         user_order_record2_db2 registerRequest = new user_order_record2_db2(store_name1, user_id1, t_price ,date, memo, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(user_order_record2.this);
                         queue.add(registerRequest);
                     }
                 });
-
                 builder.setNegativeButton("아니오", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int id) { }

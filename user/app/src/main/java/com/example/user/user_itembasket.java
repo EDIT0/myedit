@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -16,12 +15,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -40,34 +35,25 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class user_itembasket extends AppCompatActivity {
-    TextView tv1;
-
     String user_name1, user_address1, user_id1, user_address_detail1;
     Double user_lat1, user_long1;
     String title1;
 
-    private Button b1, goforpay;
+    private Button goforpay;
     private TextView sumprice;
 
-    private static String TAG = "phptest";
-
-    private EditText mEditTextName;
-    private EditText mEditTextCountry;
+    private static String TAG = "TAG";
     private TextView mTextViewResult;
     private ArrayList<user_itembasket_list> mArrayList;
     private user_itembasket_Adpter mAdapter;
     private RecyclerView mRecyclerView;
-    private EditText mEditTextSearchKeyword;
     private String mJsonString;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_itembasket);
 
-        //user_id 받아야 할 것
         Intent intent = getIntent();
         user_name1 = intent.getStringExtra("user_name");
         user_address1 = intent.getStringExtra("user_address");
@@ -76,9 +62,6 @@ public class user_itembasket extends AppCompatActivity {
         title1 = intent.getStringExtra("title");
         user_id1 = intent.getStringExtra("user_id");
         user_address_detail1 = intent.getStringExtra("user_address_detail");
-
-        /*tv1 = findViewById(R.id.title1);
-        tv1.setText(title1+" [장바구니]");*/
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(title1+"[장바구니]");
@@ -94,8 +77,8 @@ public class user_itembasket extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                    if(success){ //회원등록에 성공한 경우
+                    boolean success = jsonObject.getBoolean("success");
+                    if(success){
                         int sum_price = jsonObject.getInt("price");
                         String check_cd = jsonObject.getString("cd");
 
@@ -112,9 +95,7 @@ public class user_itembasket extends AppCompatActivity {
                         else{ }
 
                     }
-                    //실패한 경우
                     else{
-                        Toast.makeText(getApplicationContext(),"중복된 아이디입니다.",Toast.LENGTH_SHORT).show();
                         return;
                     }
                 } catch (JSONException e) {
@@ -123,14 +104,9 @@ public class user_itembasket extends AppCompatActivity {
 
             }
         };
-
-        //서버로 Volley를 이용해서 요청을 함
         user_itembasket_db registerRequest = new user_itembasket_db(user_id1, title1, responseListener);
         RequestQueue queue = Volley.newRequestQueue(user_itembasket.this);
         queue.add(registerRequest);
-
-
-        //=======================================리스트시작===========================================
 
         mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
         mRecyclerView = (RecyclerView) findViewById(R.id.listView_main_list);
@@ -152,23 +128,6 @@ public class user_itembasket extends AppCompatActivity {
         user_itembasket.GetData task = new user_itembasket.GetData();
         task.execute("http://edit0.dothome.co.kr/user_itembasket_db.php",user_id1,title1);
 
-
-
-        /*b1 = (Button) findViewById(R.id.layout2_b1);
-        b1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(user_itembasket.this, user_itempage.class);
-                intent.putExtra("user_name",user_name1);
-                intent.putExtra("user_address",user_address1);
-                intent.putExtra("user_lat",user_lat1);
-                intent.putExtra("user_long",user_long1);
-                intent.putExtra("title",title1);
-                intent.putExtra("user_id",user_id1);
-                intent.putExtra("user_address_detail",user_address_detail1);
-                startActivity(intent);
-            }
-        });*/
-
         goforpay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,16 +146,13 @@ public class user_itembasket extends AppCompatActivity {
     }
 
     private class GetData extends AsyncTask<String, Void, String> {
-
         ProgressDialog progressDialog;
         String errorString = null;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            progressDialog = ProgressDialog.show(user_itembasket.this,
-                    "Please Wait", null, true, true);
+            progressDialog = ProgressDialog.show(user_itembasket.this, "Please Wait", null, true, true);
         }
 
 
@@ -205,15 +161,12 @@ public class user_itembasket extends AppCompatActivity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null){
-
                 mTextViewResult.setText(errorString);
             }
             else {
-
                 mJsonString = result;
                 showResult();
             }
@@ -222,20 +175,12 @@ public class user_itembasket extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "user_id=" + params[1] + "&title1=" + params[2];
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -243,12 +188,10 @@ public class user_itembasket extends AppCompatActivity {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -260,7 +203,6 @@ public class user_itembasket extends AppCompatActivity {
                 else{
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -275,11 +217,8 @@ public class user_itembasket extends AppCompatActivity {
                 bufferedReader.close();
 
                 return sb.toString().trim();
-
-
             } catch (Exception e) {
-
-                Log.d(TAG, "GetData : Error ", e);
+                Log.d(TAG, "GetData: Error ", e);
                 errorString = e.toString();
 
                 return null;
@@ -290,11 +229,9 @@ public class user_itembasket extends AppCompatActivity {
 
 
     private void showResult(){
-
         String TAG_JSON="result";
         String TAG_menu = "menu";
         String TAG_price = "price";
-
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -315,20 +252,15 @@ public class user_itembasket extends AppCompatActivity {
                 mArrayList.add(personalData);
                 mAdapter.notifyDataSetChanged();
             }
-
-
-
         } catch (JSONException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case android.R.id.home:{ // 왼쪽 상단 버튼 눌렀을 때
+            case android.R.id.home:{
                 Intent intent = new Intent(user_itembasket.this, user_itempage.class);
                 intent.putExtra("user_name",user_name1);
                 intent.putExtra("user_address",user_address1);
@@ -339,7 +271,7 @@ public class user_itembasket extends AppCompatActivity {
                 intent.putExtra("user_address_detail",user_address_detail1);
                 setResult(RESULT_OK,intent);
                 finish();
-                //startActivity(intent);
+
                 return true;
             }
         }
@@ -348,7 +280,6 @@ public class user_itembasket extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //resultCode가 RESULT_OK면 if문을 실행한다.
         if (resultCode == RESULT_OK) {
             mAdapter.notifyDataSetChanged();
         }
@@ -364,8 +295,8 @@ public class user_itembasket extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                    if(success){ //회원등록에 성공한 경우
+                    boolean success = jsonObject.getBoolean("success");
+                    if(success){
                         int sum_price = jsonObject.getInt("price");
                         String check_cd = jsonObject.getString("cd");
 
@@ -383,9 +314,7 @@ public class user_itembasket extends AppCompatActivity {
                         else{ }
 
                     }
-                    //실패한 경우
                     else{
-                        Toast.makeText(getApplicationContext(),"중복된 아이디입니다.",Toast.LENGTH_SHORT).show();
                         return;
                     }
                 } catch (JSONException e) {
@@ -394,8 +323,6 @@ public class user_itembasket extends AppCompatActivity {
 
             }
         };
-
-        //서버로 Volley를 이용해서 요청을 함
         user_itembasket_db registerRequest = new user_itembasket_db(user_id1, title1, responseListener);
         RequestQueue queue = Volley.newRequestQueue(user_itembasket.this);
         queue.add(registerRequest);

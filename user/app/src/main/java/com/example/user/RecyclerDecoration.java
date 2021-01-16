@@ -10,7 +10,6 @@ public class RecyclerDecoration extends RecyclerView.ItemDecoration {
 
     private final int divHeight;
 
-
     public RecyclerDecoration(int divHeight) {
         this.divHeight = divHeight;
     }

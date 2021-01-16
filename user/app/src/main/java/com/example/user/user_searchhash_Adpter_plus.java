@@ -19,7 +19,6 @@ public class user_searchhash_Adpter_plus extends RecyclerView.Adapter<user_searc
 
     private ArrayList<user_searchhash_list_plus> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
     public user_main1 um1 = new user_main1();
 
     String user_name;
@@ -30,8 +29,6 @@ public class user_searchhash_Adpter_plus extends RecyclerView.Adapter<user_searc
     String user_address_detail;
 
     static int a = 1;
-
-
 
     public user_searchhash_Adpter_plus(Activity context, ArrayList<user_searchhash_list_plus> list, String user_name, String user_address,
                                        Double user_lat, Double user_long, String user_id, String user_address_detail) {
@@ -57,17 +54,9 @@ public class user_searchhash_Adpter_plus extends RecyclerView.Adapter<user_searc
         public CustomViewHolder(View view) {
             super(view);
             this.s_name = (TextView) view.findViewById(R.id.s_name);
-            /*this.o_id = (TextView) view.findViewById(R.id.o_id);
-            this.o_pw = (TextView) view.findViewById(R.id.o_pw);
-            this.intothestore = (LinearLayout) view.findViewById(R.id.intothestore);
-            this.data2 = view.findViewById(R.id.data2);
-            this.data3 = view.findViewById(R.id.data3);*/
             this.cv1 = view.findViewById(R.id.cardview);
         }
-
-
     }
-
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -79,7 +68,6 @@ public class user_searchhash_Adpter_plus extends RecyclerView.Adapter<user_searc
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, final int position) {
-
         viewholder.s_name.setText("#"+mList.get(position).getMember_s_name());
 
         a = (int)(Math.random()*5);
@@ -105,8 +93,6 @@ public class user_searchhash_Adpter_plus extends RecyclerView.Adapter<user_searc
 
         }
 
-
-
         viewholder.cv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,91 +107,10 @@ public class user_searchhash_Adpter_plus extends RecyclerView.Adapter<user_searc
                 context.startActivity(intent);
             }
         });
-
-
-
-        /*if(mList.get(position).getMember_o_id().equals("null")){
-            viewholder.o_id.setText("★0.0");
-        }
-        else {
-            viewholder.o_id.setText("★" + mList.get(position).getMember_o_id().substring(0, 3));
-            *//*viewholder.o_id.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context.getApplication(), "하하하",Toast.LENGTH_SHORT).show();
-                }
-            });*//*
-        }
-
-        if(mList.get(position).getMember_o_pw().equals("tag1") && mList.get(position).getMember_data2().equals("tag2") &&
-                mList.get(position).getMember_data3().equals("tag3")){
-                    viewholder.o_pw.setText("");
-                    viewholder.data2.setText("");
-                    viewholder.data3.setText("");
-        }
-
-        viewholder.o_pw.setText(mList.get(position).getMember_o_pw());
-        viewholder.data2.setText(mList.get(position).getMember_data2());
-        viewholder.data3.setText(mList.get(position).getMember_data3());
-
-        if(mList.get(position).getMember_cd().equals("1")){
-            *//*viewholder.intothestore.setBackgroundResource();*//*
-            viewholder.s_name.setTextColor(Color.parseColor("#BEBEBE"));
-            viewholder.o_id.setTextColor(Color.parseColor("#BEBEBE"));
-            viewholder.o_pw.setTextColor(Color.parseColor("#BEBEBE"));
-            viewholder.data2.setTextColor(Color.parseColor("#BEBEBE"));
-            viewholder.data3.setTextColor(Color.parseColor("#BEBEBE"));
-            viewholder.intothestore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context.getApplicationContext(), ImageActivity.class);
-
-                    *//*intent.putExtra("image",Integer.toString(mList.get(position).getImage()));*//*
-                    intent.putExtra("title", mList.get(position).getMember_s_name());
-                    intent.putExtra("gender", mList.get(position).getMember_o_id());
-                    intent.putExtra("age", mList.get(position).getMember_o_pw());
-
-                    intent.putExtra("user_name", user_name);
-                    intent.putExtra("user_address", user_address);
-                    intent.putExtra("user_lat", user_lat);
-                    intent.putExtra("user_long", user_long);
-                    intent.putExtra("user_id", user_id);
-                    intent.putExtra("user_address_detail", user_address_detail);
-                    context.startActivity(intent);
-                }
-            });
-        }else {
-            viewholder.intothestore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context.getApplicationContext(), ImageActivity.class);
-
-                    *//*intent.putExtra("image",Integer.toString(mList.get(position).getImage()));*//*
-                    intent.putExtra("title", mList.get(position).getMember_s_name());
-                    intent.putExtra("gender", mList.get(position).getMember_o_id());
-                    intent.putExtra("age", mList.get(position).getMember_o_pw());
-
-                    intent.putExtra("user_name", user_name);
-                    intent.putExtra("user_address", user_address);
-                    intent.putExtra("user_lat", user_lat);
-                    intent.putExtra("user_long", user_long);
-                    intent.putExtra("user_id", user_id);
-                    intent.putExtra("user_address_detail", user_address_detail);
-                    context.startActivity(intent);
-                }
-            });
-        }*/
-
-
     }
 
     @Override
     public int getItemCount() {
         return (null != mList ? mList.size() : 0);
     }
-
-
-
-
-
 }

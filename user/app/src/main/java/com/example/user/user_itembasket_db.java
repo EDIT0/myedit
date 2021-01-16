@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class user_itembasket_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/user_itembasket_sum_db.php";
     private Map<String, String> map;
 

@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class user_order_record2_db2 extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/user_order_record2_db2.php";
     private Map<String, String> map;
 
@@ -22,8 +21,6 @@ public class user_order_record2_db2 extends StringRequest {
         map.put("t_price",t_price+"");
         map.put("date",date+"");
         map.put("memo",memo);
-
-
     }
 
     @Override

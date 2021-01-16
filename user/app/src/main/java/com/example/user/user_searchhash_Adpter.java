@@ -19,8 +19,6 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
 
     private ArrayList<user_searchhash_list> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
-    public user_main1 um1 = new user_main1();
 
     String user_name;
     String user_address;
@@ -28,8 +26,6 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
     Double user_long;
     String user_id;
     String user_address_detail;
-
-
 
     public user_searchhash_Adpter(Activity context, ArrayList<user_searchhash_list> list, String user_name, String user_address,
                                   Double user_lat, Double user_long, String user_id, String user_address_detail) {
@@ -43,13 +39,11 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
         this.user_address_detail = user_address_detail;
     }
 
-
     class CustomViewHolder extends RecyclerView.ViewHolder {
         protected TextView o_id;
         protected TextView s_name;
         protected TextView o_pw,data2,data3;
         protected LinearLayout intothestore;
-
 
         public CustomViewHolder(View view) {
             super(view);
@@ -61,9 +55,7 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
             this.data3 = view.findViewById(R.id.data3);
         }
 
-
     }
-
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -82,12 +74,6 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
         }
         else {
             viewholder.o_id.setText("★" + mList.get(position).getMember_o_id().substring(0, 3));
-            /*viewholder.o_id.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context.getApplication(), "하하하",Toast.LENGTH_SHORT).show();
-                }
-            });*/
         }
 
         if(mList.get(position).getMember_o_pw().equals("tag1") && mList.get(position).getMember_data2().equals("tag2") &&
@@ -97,73 +83,11 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
                     viewholder.data3.setText("");
         }
 
-
-        //하하하
         viewholder.o_pw.setText(mList.get(position).getMember_o_pw());
         viewholder.data2.setText(mList.get(position).getMember_data2());
         viewholder.data3.setText(mList.get(position).getMember_data3());
 
-
-
-        /*viewholder.o_pw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplication(), user_searchhash.class);
-                intent.putExtra("user_name", user_name);
-                intent.putExtra("user_address", user_address);
-                intent.putExtra("user_lat", user_lat);
-                intent.putExtra("user_long", user_long);
-                intent.putExtra("user_id", user_id);
-                intent.putExtra("user_address_detail", user_address_detail);
-                intent.putExtra("data1",mList.get(position).getMember_o_pw());
-
-                intent.putExtra("title", mList.get(position).getMember_s_name());
-                intent.putExtra("gender", mList.get(position).getMember_o_id());
-                intent.putExtra("age", mList.get(position).getMember_o_pw());
-                context.startActivity(intent);
-            }
-        });
-
-        viewholder.data2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplication(), user_searchhash.class);
-                intent.putExtra("user_name", user_name);
-                intent.putExtra("user_address", user_address);
-                intent.putExtra("user_lat", user_lat);
-                intent.putExtra("user_long", user_long);
-                intent.putExtra("user_id", user_id);
-                intent.putExtra("user_address_detail", user_address_detail);
-                intent.putExtra("data2",mList.get(position).getMember_data2());
-
-                intent.putExtra("title", mList.get(position).getMember_s_name());
-                intent.putExtra("gender", mList.get(position).getMember_o_id());
-                intent.putExtra("age", mList.get(position).getMember_o_pw());
-                context.startActivity(intent);
-            }
-        });
-
-        viewholder.data3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplication(), user_searchhash.class);
-                intent.putExtra("user_name", user_name);
-                intent.putExtra("user_address", user_address);
-                intent.putExtra("user_lat", user_lat);
-                intent.putExtra("user_long", user_long);
-                intent.putExtra("user_id", user_id);
-                intent.putExtra("user_address_detail", user_address_detail);
-                intent.putExtra("data3",mList.get(position).getMember_data3());
-
-                intent.putExtra("title", mList.get(position).getMember_s_name());
-                intent.putExtra("gender", mList.get(position).getMember_o_id());
-                intent.putExtra("age", mList.get(position).getMember_o_pw());
-                context.startActivity(intent);
-            }
-        });*/
-
         if(mList.get(position).getMember_cd().equals("1")){
-            /*viewholder.intothestore.setBackgroundResource();*/
             viewholder.s_name.setTextColor(Color.parseColor("#BEBEBE"));
             viewholder.o_id.setTextColor(Color.parseColor("#BEBEBE"));
             viewholder.o_pw.setTextColor(Color.parseColor("#BEBEBE"));
@@ -174,7 +98,6 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
                 public void onClick(View view) {
                     Intent intent = new Intent(context.getApplicationContext(), ImageActivity.class);
 
-                    /*intent.putExtra("image",Integer.toString(mList.get(position).getImage()));*/
                     intent.putExtra("title", mList.get(position).getMember_s_name());
                     intent.putExtra("gender", mList.get(position).getMember_o_id());
                     intent.putExtra("age", mList.get(position).getMember_o_pw());
@@ -194,7 +117,6 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
                 public void onClick(View view) {
                     Intent intent = new Intent(context.getApplicationContext(), ImageActivity.class);
 
-                    /*intent.putExtra("image",Integer.toString(mList.get(position).getImage()));*/
                     intent.putExtra("title", mList.get(position).getMember_s_name());
                     intent.putExtra("gender", mList.get(position).getMember_o_id());
                     intent.putExtra("age", mList.get(position).getMember_o_pw());
@@ -210,16 +132,11 @@ public class user_searchhash_Adpter extends RecyclerView.Adapter<user_searchhash
             });
         }
 
-
     }
 
     @Override
     public int getItemCount() {
         return (null != mList ? mList.size() : 0);
     }
-
-
-
-
 
 }

@@ -12,26 +12,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -50,7 +41,6 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
 
     private ArrayList<user_storereview_list> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
     public user_main1 um1 = new user_main1();
 
     String user_name;
@@ -60,10 +50,7 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
     String user_id;
     String user_address_detail;
     String store_name;
-
     Bitmap bm;
-
-
 
     public user_storereview_Adpter(Activity context, ArrayList<user_storereview_list> list, String store_name, String user_name, String user_address,
                                     Double user_lat, Double user_long, String user_id, String user_address_detail) {
@@ -101,14 +88,9 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
             this.temp = (TextView) view.findViewById(R.id.temp);
             this.start = (TextView) view.findViewById(R.id.start);
             this.iv1 = view.findViewById(R.id.image1);
-            /*this.iv2 = (ImageView) view.findViewById(R.id.image2);
-            this.iv3 = (ImageView) view.findViewById(R.id.image3);*/
 
         }
-
-
     }
-
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -128,7 +110,7 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
         viewholder.content.setText(mList.get(position).getMember_content());
         viewholder.items.setText(mList.get(position).getMember_items());
 
-        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage"); // 저장 경로
+        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage");
         if (!saveFile.exists()) {
             saveFile.mkdir();
         } else {
@@ -192,7 +174,6 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
 
         }
 
-
         viewholder.iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,26 +203,6 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
             }
         });
 
-
-        /*viewholder.b1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(), user_order_record2.class);
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("user_address",user_address);
-                intent.putExtra("user_lat",user_lat);
-                intent.putExtra("user_long",user_long);
-                intent.putExtra("user_id",user_id);
-                intent.putExtra("user_address_detail",user_address_detail);
-                intent.putExtra("store_name",s_name);
-                intent.putExtra("date",date);
-
-                context.startActivity(intent);
-            }
-        });*/
-
-
         viewholder.privatereview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -259,16 +220,12 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
                 context.startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return (null != mList ? mList.size() : 0);
     }
-
-
 
     public user_storereview_Adpter(){  //생성자추가
         mFTPClient = new FTPClient();
@@ -321,7 +278,7 @@ public class user_storereview_Adpter extends RecyclerView.Adapter<user_storerevi
         File[] childFileList = dir.listFiles();
         if (dir.exists()) {
             for (File childFile : childFileList) {
-                childFile.delete(); //하위 파일
+                childFile.delete();
             }
 
             dir.delete();

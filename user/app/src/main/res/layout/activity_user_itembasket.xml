@@ -17,18 +17,6 @@
         android:orientation="vertical"
         android:layout_weight="1.5">
 
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/title1"
-            android:layout_gravity="center"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_marginTop="80dp"
-            android:fontFamily="@font/nanum_gothic_bold"
-            />-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,18 +105,6 @@
             android:orientation="horizontal"
             android:weightSum="3"
             >
-
-            <!--<Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="돌아가기"
-                android:id="@+id/layout2_b1"
-                android:textColor="@color/white"
-                android:fontFamily="@font/nanum_gothic_bold"
-                android:background="@drawable/buttonshape"
-                android:layout_marginRight="20dp"
-                android:textSize="20dp"/>-->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_gravity="center"

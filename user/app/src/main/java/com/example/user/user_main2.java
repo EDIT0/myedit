@@ -14,9 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +21,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.kyleduo.switchbutton.SwitchButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,34 +35,22 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class user_main2 extends AppCompatActivity{
-
-
     public String var_name, var_address,  var_id;
     public Double var_lat, var_long;
 
     private long backBtnTime = 0;
-    Button b1,b2,b3,b4,b5,b6,b7,b8;
+    Button b1;
     TextView user_address;
-
-    private ListView listView;
-
 
     String user_name1, user_address1,user_id1, user_address_detail1;
     Double user_lat1, user_long1;
 
-    //===========================================
-    private static String TAG = "phptest";
-
-    private EditText mEditTextName;
-    private EditText mEditTextCountry;
+    private static String TAG = "TAG";
     private TextView mTextViewResult;
     private ArrayList<main1_list> mArrayList;
     private main1_Adpter mAdapter;
     private RecyclerView mRecyclerView;
-    private EditText mEditTextSearchKeyword;
     private String mJsonString;
-
-    //==========================================
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +64,6 @@ public class user_main2 extends AppCompatActivity{
         user_long1 = intent.getDoubleExtra("user_long",0.0);
         user_id1 = intent.getStringExtra("user_id");
         user_address_detail1 = intent.getStringExtra("user_address_detail");
-
 
         var_name = user_name1;
         var_address = user_address1;
@@ -133,15 +115,6 @@ public class user_main2 extends AppCompatActivity{
             }
         });
 
-
-
-
-
-
-
-
-        //=======================================
-
         mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
         mRecyclerView = (RecyclerView) findViewById(R.id.listView_main_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -156,75 +129,19 @@ public class user_main2 extends AppCompatActivity{
         mArrayList.clear();
         mAdapter.notifyDataSetChanged();
 
-        /*mRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));*/
-
         RecyclerDecoration spaceDecoration = new RecyclerDecoration(10);
         mRecyclerView.addItemDecoration(spaceDecoration);
 
         GetData task = new GetData();
         task.execute("http://edit0.dothome.co.kr/main2_db.php",String.valueOf(user_lat1),String.valueOf(user_long1));
 
-
-
-        //======================================
-
-
-        /*context =this;*/
-
-
-        //액션바 설정하기//
-        //액션바 타이틀 변경하기
         getSupportActionBar().setTitle("[메인]  "+user_name1+"님 안녕하세요.");
         //액션바 배경색 변경
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF339999));
-        //홈버튼 표시
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         user_address = findViewById(R.id.tv1);
         user_address.setText(user_address1);
-
-
-        /*listView = (ListView)findViewById(R.id.listView);
-        myHuman1 = new Human("하나세탁소", "평점:", "#깨끗", R.drawable.ic_launcher_background);
-        myHuman2 = new Human("둘세탁소", "평점", "#피죤",R.drawable.ic_launcher_foreground);
-        myHuman3 = new Human("셋세탁소", "평점", "#해시태그", R.drawable.ic_launcher_background);
-        h_info_list = new ArrayList<Human>();
-        h_info_list.add(myHuman1);
-        h_info_list.add(myHuman2);
-        h_info_list.add(myHuman3);
-        h_info_list.add(myHuman1);
-        h_info_list.add(myHuman2);
-        h_info_list.add(myHuman3);
-
-        myadapter = new HumanAdpter(getApplicationContext(),R.layout.human_info, h_info_list);
-        listView.setAdapter(myadapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), ImageActivity.class); // 다음넘어갈 화면
-
-                intent.putExtra("image",Integer.toString(h_info_list.get(position).getImage()));
-                intent.putExtra("name",h_info_list.get(position).getName());
-                intent.putExtra("gender",h_info_list.get(position).getGender());
-                intent.putExtra("age",h_info_list.get(position).getAge());
-
-                intent.putExtra("user_name",user_name1);
-                intent.putExtra("user_address",user_address1);
-                intent.putExtra("user_lat",user_lat1);
-                intent.putExtra("user_long",user_long1);
-                intent.putExtra("user_id",user_id1);
-
-                *//*Bitmap sendBitmap = h_info_list.get(position).image;
-
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                sendBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
-
-                intent.putExtra("image",byteArray);*//*
-                startActivity(intent);
-            }
-        });*/
     }
 
     @Override
@@ -243,8 +160,6 @@ public class user_main2 extends AppCompatActivity{
         }
     }
 
-    //==========================================================================================
-
     private class GetData extends AsyncTask<String, Void, String> {
 
         ProgressDialog progressDialog;
@@ -254,8 +169,7 @@ public class user_main2 extends AppCompatActivity{
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(user_main2.this,
-                    "Please Wait", null, true, true);
+            progressDialog = ProgressDialog.show(user_main2.this, "Please Wait", null, true, true);
         }
 
 
@@ -264,15 +178,12 @@ public class user_main2 extends AppCompatActivity{
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null){
-
                 mTextViewResult.setText(errorString);
             }
             else {
-
                 mJsonString = result;
                 showResult();
             }
@@ -281,20 +192,12 @@ public class user_main2 extends AppCompatActivity{
 
         @Override
         protected String doInBackground(String... params) {
-
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "user_lat=" + params[1] + "&user_long=" + params[2];
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -302,12 +205,10 @@ public class user_main2 extends AppCompatActivity{
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -319,7 +220,6 @@ public class user_main2 extends AppCompatActivity{
                 else{
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -334,11 +234,8 @@ public class user_main2 extends AppCompatActivity{
                 bufferedReader.close();
 
                 return sb.toString().trim();
-
-
             } catch (Exception e) {
-
-                Log.d(TAG, "GetData : Error ", e);
+                Log.d(TAG, "GetData: Error ", e);
                 errorString = e.toString();
 
                 return null;
@@ -349,20 +246,17 @@ public class user_main2 extends AppCompatActivity{
 
 
     private void showResult(){
-
         String TAG_JSON="result";
         String TAG_s_name = "s_name";
         String TAG_o_id = "o_id";
         String TAG_o_pw ="o_pw";
         String TAG_cd = "cd";
 
-
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for(int i=0;i<jsonArray.length();i++){
-
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String s_name1 = item.getString(TAG_s_name);
@@ -380,37 +274,21 @@ public class user_main2 extends AppCompatActivity{
                 mArrayList.add(personalData);
                 mAdapter.notifyDataSetChanged();
             }
-
-
-
         } catch (JSONException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
 
     }
 
-
-
-
-    //=============================================================================================
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu1, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
 
         switch(item.getItemId()){
             case R.id.b1:
@@ -491,10 +369,6 @@ public class user_main2 extends AppCompatActivity{
                 break;
 
         }
-
         return super.onOptionsItemSelected(item);
-    }
-    public void onClick(View v){
-
     }
 }

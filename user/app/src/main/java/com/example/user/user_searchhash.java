@@ -1,13 +1,11 @@
 package com.example.user;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -50,40 +48,18 @@ public class user_searchhash extends Activity {
     String user_name1, user_address1,user_id1, user_address_detail1, data1, data2, data3;
     Double user_lat1, user_long1;
 
-    private static String TAG = "phptest";
+    private static String TAG = "TAG";
 
-    private EditText mEditTextName;
-    private EditText mEditTextCountry;
     private TextView mTextViewResult;
     private ArrayList<user_searchhash_list> mArrayList;
     private user_searchhash_Adpter mAdapter;
     private RecyclerView mRecyclerView;
-    private EditText mEditTextSearchKeyword;
     private String mJsonString;
-
-
-    /////////////////대체 리사이클러뷰//////////////////
-    /*private TextView mTextViewResult1;
-    private ArrayList<user_searchhash_list_plus> mArrayList1;
-    private user_searchhash_Adpter_plus mAdapter1;
-    private RecyclerView mRecyclerView1;
-    private String mJsonString1;*/
-
-
-
-    //////////////////////////////////////////////////
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_searchhash);
-
-
 
         Intent intent = getIntent();
         user_name1 = intent.getStringExtra("user_name");
@@ -237,9 +213,6 @@ public class user_searchhash extends Activity {
                     iv11.setVisibility(View.VISIBLE);
                     tv11.setVisibility(View.VISIBLE);
 
-                    /*user_searchhash.GetData1 task = new user_searchhash.GetData1();
-                    task.execute("http://edit0.dothome.co.kr/user_searchhash_db_plus.php",String.valueOf(user_lat1),String.valueOf(user_long1),String.valueOf(data1),
-                            String.valueOf(data2),String.valueOf(data3));*/
                 }
                 else{
                     mRecyclerView.setAdapter(mAdapter);
@@ -295,7 +268,6 @@ public class user_searchhash extends Activity {
         });
 
 
-
         mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
         mRecyclerView = (RecyclerView) findViewById(R.id.listView_main_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -310,46 +282,11 @@ public class user_searchhash extends Activity {
         mArrayList.clear();
         mAdapter.notifyDataSetChanged();
 
-        /*mRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));*/
-
         RecyclerDecoration spaceDecoration = new RecyclerDecoration(10);
         mRecyclerView.addItemDecoration(spaceDecoration);
 
-        /////////////////대체 리사이클러뷰//////////////////
-
-
-
-        /*mTextViewResult1 = (TextView)findViewById(R.id.textView_main_result);
-        mRecyclerView1 = (RecyclerView) findViewById(R.id.listView_main_list);
-        mRecyclerView1.setLayoutManager(new LinearLayoutManager(this));
-
-        mTextViewResult1.setMovementMethod(new ScrollingMovementMethod());
-
-        mArrayList1 = new ArrayList<>();
-
-        mAdapter1 = new user_searchhash_Adpter_plus(this, mArrayList1, var_name,var_address,var_lat,var_long,var_id, var_address_detail);
-        mRecyclerView1.setAdapter(mAdapter1);
-
-        mArrayList1.clear();
-        mAdapter1.notifyDataSetChanged();
-
-        *//*mRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));*//*
-
-        RecyclerDecoration spaceDecoration1 = new RecyclerDecoration(10);
-        mRecyclerView1.addItemDecoration(spaceDecoration1);*/
-
-
-        //////////////////////////////////////////////////
-
-
-
-            user_searchhash.GetData task = new user_searchhash.GetData();
-            task.execute("http://edit0.dothome.co.kr/user_searchhash_db.php",String.valueOf(user_lat1),String.valueOf(user_long1),String.valueOf(data1),
-                    String.valueOf(data2),String.valueOf(data3));
-
-
-
-
+        user_searchhash.GetData task = new user_searchhash.GetData();
+        task.execute("http://edit0.dothome.co.kr/user_searchhash_db.php",String.valueOf(user_lat1),String.valueOf(user_long1),String.valueOf(data1), String.valueOf(data2),String.valueOf(data3));
 
         tv11 = findViewById(R.id.backtext);
         iv11 = findViewById(R.id.backimage);
@@ -358,23 +295,6 @@ public class user_searchhash extends Activity {
             iv11.setVisibility(View.VISIBLE);
             tv11.setVisibility(View.VISIBLE);
         }
-
-
-//        ingi = findViewById(R.id.ingi);
-//        ingi.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplication(),user_searchhash_plus.class);
-//                intent.putExtra("user_name",user_name1);
-//                intent.putExtra("user_address",user_address1);
-//                intent.putExtra("user_lat",user_lat1);
-//                intent.putExtra("user_long",user_long1);
-//                intent.putExtra("user_id",user_id1);
-//                intent.putExtra("user_address_detail",user_address_detail1);
-//                startActivity(intent);
-//            }
-//        });
-
     }
 
     @Override
@@ -402,9 +322,7 @@ public class user_searchhash extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            progressDialog = ProgressDialog.show(user_searchhash.this,
-                    "Please Wait", null, true, true);
+            progressDialog = ProgressDialog.show(user_searchhash.this, "Please Wait", null, true, true);
         }
 
 
@@ -413,38 +331,26 @@ public class user_searchhash extends Activity {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null){
-
                 mTextViewResult.setText(errorString);
             }
             else {
-
                 mJsonString = result;
                 showResult();
             }
         }
 
-
         @Override
         protected String doInBackground(String... params) {
-
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "user_lat=" + params[1] + "&user_long=" + params[2] + "&data1=" + params[3] +
                     "&data2=" + params[4] + "&data3=" + params[5];
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -452,12 +358,10 @@ public class user_searchhash extends Activity {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -469,7 +373,6 @@ public class user_searchhash extends Activity {
                 else{
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -484,22 +387,17 @@ public class user_searchhash extends Activity {
                 bufferedReader.close();
 
                 return sb.toString().trim();
-
-
             } catch (Exception e) {
-
-                Log.d(TAG, "GetData : Error ", e);
+                Log.d(TAG, "GetData: Error ", e);
                 errorString = e.toString();
 
                 return null;
             }
-
         }
     }
 
 
     private void showResult(){
-
         String TAG_JSON="result";
         String TAG_s_name = "s_name";
         String TAG_o_id = "o_id";
@@ -507,7 +405,6 @@ public class user_searchhash extends Activity {
         String TAG_cd = "cd";
         String TAG_data2 = "data2";
         String TAG_data3 = "data3";
-
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -543,179 +440,10 @@ public class user_searchhash extends Activity {
                 mArrayList.add(personalData);
                 mAdapter.notifyDataSetChanged();
             }
-
-
-
         } catch (JSONException e) {
 
-            Log.d(TAG, "showResult : ", e);
+            Log.d(TAG, "showResult: ", e);
         }
 
     }
-
-
-
-
-
-    ///////////////////////대체 리사이클러뷰/////////////////////////
-
-
-
-
-
-    /*private class GetData1 extends AsyncTask<String, Void, String> {
-
-        ProgressDialog progressDialog;
-        String errorString = null;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-            progressDialog = ProgressDialog.show(user_searchhash.this,
-                    "Please Wait", null, true, true);
-        }
-
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            progressDialog.dismiss();
-            *//*mTextViewResult.setText(result);*//*
-            Log.d(TAG, "response - " + result);
-
-            if (result == null){
-
-                mTextViewResult1.setText(errorString);
-            }
-            else {
-
-                mJsonString1 = result;
-                showResult1();
-            }
-        }
-
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            *//*String serverURL = params[0];
-            String postParameters = params[1];*//*
-            *//*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*//*
-
-            String serverURL = params[0];
-            String postParameters = "user_lat=" + params[1] + "&user_long=" + params[2] + "&data1=" + params[3] +
-                    "&data2=" + params[4] + "&data3=" + params[5];
-
-            try {
-
-                URL url = new URL(serverURL);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoInput(true);
-                httpURLConnection.connect();
-
-
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
-
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(TAG, "response code - " + responseStatusCode);
-
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                StringBuilder sb = new StringBuilder();
-                String line;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-
-                bufferedReader.close();
-
-                return sb.toString().trim();
-
-
-            } catch (Exception e) {
-
-                Log.d(TAG, "GetData : Error ", e);
-                errorString = e.toString();
-
-                return null;
-            }
-
-        }
-    }
-
-
-    private void showResult1(){
-
-        String TAG_JSON="result";
-        String TAG_s_name = "s_name";
-        *//*String TAG_o_id = "o_id";
-        String TAG_o_pw ="o_pw";
-        String TAG_cd = "cd";
-        String TAG_data2 = "data2";
-        String TAG_data3 = "data3";*//*
-
-
-        try {
-            JSONObject jsonObject = new JSONObject(mJsonString1);
-            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-
-            for(int i=0;i<jsonArray.length();i++){
-
-                JSONObject item = jsonArray.getJSONObject(i);
-
-                String s_name1 = item.getString(TAG_s_name);
-                *//*String o_id1 = item.getString(TAG_o_id);
-                String o_pw1 = item.getString(TAG_o_pw);
-                String cd1 = item.getString(TAG_cd);
-                String data21 = item.getString(TAG_data2);
-                String data31 = item.getString(TAG_data3);*//*
-
-                user_searchhash_list_plus personalData = new user_searchhash_list_plus();
-
-                personalData.setMember_s_name(s_name1);
-                *//*personalData.setMember_o_id(o_id1);
-                personalData.setMember_o_pw(o_pw1);
-                personalData.setMember_cd(cd1);
-                personalData.setMember_data2(data21);
-                personalData.setMember_data3(data31);*//*
-
-
-                mArrayList1.add(personalData);
-                mAdapter1.notifyDataSetChanged();
-            }
-
-
-
-        } catch (JSONException e) {
-
-            Log.d(TAG, "showResult1 : ", e);
-        }
-
-    }*/
-
-
-
 }

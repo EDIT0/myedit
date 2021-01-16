@@ -8,8 +8,6 @@ public class user_storereview_list {
     private String member_items;
     private String member_o_comment;
     private String member_image1;
-    /*private String member_image2;
-    private String member_image3;*/
 
     public String getMember_u_id() {
         return member_u_id;
@@ -34,12 +32,6 @@ public class user_storereview_list {
     public String getMember_image1() {
         return member_image1;
     }
-    /*public String getMember_image2() {
-        return member_image2;
-    }
-    public String getMember_image3() {
-        return member_image3;
-    }*/
 
 
     public void setMember_u_id(String member_u_id) {
@@ -48,7 +40,6 @@ public class user_storereview_list {
     public void setMember_rating(String member_rating) {
         this.member_rating = member_rating;
     }
-
     public void setMember_date(String member_date) {
         this.member_date = member_date;
     }
@@ -64,42 +55,6 @@ public class user_storereview_list {
     public void setMember_image1(String member_image1) {
         this.member_image1 = member_image1;
     }
-    /*public void setMember_image2(String member_image2) {
-        this.member_image2 = member_image2;
-    }
-    public void setMember_image3(String member_image3) {
-        this.member_image3 = member_image3;
-    }*/
 
 
 }
-
-/*
-public class Human {
-    public String name;
-    public String gender;
-    public String age;
-    public int image;
-
-    public String getName() {
-        return name;
-    }
-    public String getAge(){
-        return age;
-    }
-    public String getGender(){
-        return gender;
-    }
-    public int getImage(){
-        return image;
-    }
-
-    Human(String name, String gender, String age, int image){
-        this.image = image;
-        this.name =name;
-        this.gender = gender;
-        this.age = age;
-    }
-
-
-}*/

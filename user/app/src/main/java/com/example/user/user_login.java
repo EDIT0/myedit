@@ -33,8 +33,6 @@ public class user_login extends Activity {
 
     private long backBtnTime = 0;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +40,6 @@ public class user_login extends Activity {
 
         user_id1 = (EditText) findViewById(R.id.layout5_et1);
         user_password1 = (EditText) findViewById(R.id.layout5_et2);
-
-
 
         findyourid = (Button) findViewById(R.id.layout5_b1);
         findyourid.setOnClickListener(new View.OnClickListener() {
@@ -67,26 +63,24 @@ public class user_login extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
-                                /////////////////////// 파일 쓰기 ///////////////////////
-                                // 파일 생성
-                                File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/account"); // 저장 경로
-                                // 폴더 생성
-                                if(!saveFile.exists()){ // 폴더 없을 경우
-                                    saveFile.mkdir(); // 폴더 생성
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
+                                File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/account");
+
+                                if(!saveFile.exists()){
+                                    saveFile.mkdir();
                                 }
+
                                 try {
-                                    long now = System.currentTimeMillis(); // 현재시간 받아오기
-                                    Date date = new Date(now); // Date 객체 생성
+                                    long now = System.currentTimeMillis();
+                                    Date date = new Date(now);
                                     SimpleDateFormat sdf = new SimpleDateFormat();
                                     String nowTime = sdf.format(date);
 
                                     BufferedWriter buf = new BufferedWriter(new FileWriter(saveFile+"/security.txt", true));
-                                    /*buf.append(nowTime + " "); // 날짜 쓰기*/
 
-                                    buf.append(user_id+" "+u_p); // 파일 쓰기
-                                    buf.newLine(); // 개행
+                                    buf.append(user_id+" "+u_p);
+                                    buf.newLine();
                                     buf.close();
                                 } catch (FileNotFoundException e) {
                                     e.printStackTrace();
@@ -111,7 +105,6 @@ public class user_login extends Activity {
                                 intent.putExtra("user_address_detail",user_address_detail);
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확한 아이디/패스워드를 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -145,7 +138,6 @@ public class user_login extends Activity {
     }
 
     public String change_hash(String text){
-        // SHA-256 MessageDigest의 생성
         MessageDigest mdSHA256 = null;
         try {
             mdSHA256 = MessageDigest.getInstance("SHA-256");
@@ -153,17 +145,14 @@ public class user_login extends Activity {
             e.printStackTrace();
         }
 
-        // " Java 마스터! " 문자열 바이트로 메시지 다이제스트를 갱신
         try {
             mdSHA256.update(text.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        // 해시 계산 반환값은 바이트 배열
         byte[] sha256Hash = mdSHA256.digest();
 
-        // 바이트배열을 16진수 문자열로 변환하여 표시
         StringBuilder hexSHA256hash = new StringBuilder();
         for(byte b : sha256Hash) {
             String hexString = String.format("%02x", b);

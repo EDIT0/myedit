@@ -2,13 +2,11 @@ package com.example.user;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,11 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,44 +41,27 @@ public class user_storereview extends Fragment {
 
     TextView tv11;
     ImageView iv11;
-
     int count=0;
+    String TAG = "TAG";
 
-    public user_storereview() {
-    }
-
-    String TAG = "phptest";
-
-    EditText mEditTextName;
-    EditText mEditTextCountry;
     TextView mTextViewResult;
     ArrayList<user_storereview_list> mArrayList;
     user_storereview_Adpter mAdapter;
     RecyclerView mRecyclerView;
-    EditText mEditTextSearchKeyword;
     String mJsonString;
-
-    Button b1;
-
-
-
     String user_name1, user_address1;
     Double user_lat1, user_long1;
     String store_name1, user_id1, user_address_detail1;
-
     TextView tv1,tv2,tv3;
     RatingBar rb1;
 
     String total_num;
     double avg;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_user_storereview, container, false);
-
-
 
         //user_id 받아야 할 것
         Intent intent = getActivity().getIntent();
@@ -102,20 +79,20 @@ public class user_storereview extends Fragment {
         tv2 = (TextView) rootView.findViewById(R.id.avgrating);
         tv3 = (TextView) rootView.findViewById(R.id.total_review_num);
         rb1 = (RatingBar) rootView.findViewById(R.id.rating);
+
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                    if(success){ //회원등록에 성공한 경우
+                    boolean success = jsonObject.getBoolean("success");
+                    if(success){
                         total_num = jsonObject.getString("total_num");
                         avg = jsonObject.getDouble("avg");
                         tv3.setText(total_num);
                         tv2.setText(String.format("%.1f", avg));
                         rb1.setRating((int) avg);
                     }
-                    //실패한 경우
                     else{
                         Toast.makeText(getActivity(),"SUM ERROR",Toast.LENGTH_SHORT).show();
                         return;
@@ -129,8 +106,6 @@ public class user_storereview extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         queue.add(registerRequest);
 
-
-        //=======================================리스트시작===========================================
 
         mTextViewResult = (TextView)rootView.findViewById(R.id.textView_main_result);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.listView_main_list);
@@ -162,34 +137,13 @@ public class user_storereview extends Fragment {
             tv11.setVisibility(View.VISIBLE);
         }
 
-
-//        b1 = (Button) rootView.findViewById(R.id.layout2_b1);
-//        b1.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), user_main1.class);
-//                intent.putExtra("user_name",user_name1);
-//                intent.putExtra("user_address",user_address1);
-//                intent.putExtra("user_lat",user_lat1);
-//                intent.putExtra("user_long",user_long1);
-//                intent.putExtra("title",store_name1);
-//                intent.putExtra("user_id",user_id1);
-//                intent.putExtra("user_address_detail",user_address_detail1);
-//                startActivity(intent);
-//            }
-//        });
-
-
         return rootView;
-
-        //xml 레이아웃이 인플레이트 되고 자바소스 코드와 연결이된다.
     }
 
 
 
 
-
     private class GetData extends AsyncTask<String, Void, String> {
-
         ProgressDialog progressDialog;
         String errorString = null;
 
@@ -197,8 +151,7 @@ public class user_storereview extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog = ProgressDialog.show(getActivity(),
-                    "Please Wait", null, true, true);
+            progressDialog = ProgressDialog.show(getActivity(),"Please Wait", null, true, true);
         }
 
 
@@ -207,15 +160,12 @@ public class user_storereview extends Fragment {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null){
-
                 mTextViewResult.setText(errorString);
             }
             else {
-
                 mJsonString = result;
                 showResult();
             }
@@ -224,20 +174,12 @@ public class user_storereview extends Fragment {
 
         @Override
         protected String doInBackground(String... params) {
-
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "store_name=" + params[1];
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -245,12 +187,10 @@ public class user_storereview extends Fragment {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -262,7 +202,6 @@ public class user_storereview extends Fragment {
                 else{
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -277,11 +216,8 @@ public class user_storereview extends Fragment {
                 bufferedReader.close();
 
                 return sb.toString().trim();
-
-
             } catch (Exception e) {
-
-                Log.d(TAG, "GetData : Error ", e);
+                Log.d(TAG, "GetData: Error ", e);
                 errorString = e.toString();
 
                 return null;
@@ -292,7 +228,6 @@ public class user_storereview extends Fragment {
 
 
     private void showResult(){
-
         String TAG_JSON="result";
         String TAG_u_id = "u_id";
         String TAG_rating = "rating";
@@ -301,9 +236,6 @@ public class user_storereview extends Fragment {
         String TAG_items = "items";
         String TAG_o_comment = "o_comment";
         String TAG_image_one = "image_one";
-        /*String TAG_image_two = "image_two";
-        String TAG_image_three = "image_three";*/
-
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -320,8 +252,6 @@ public class user_storereview extends Fragment {
                 String items1 = item.getString(TAG_items);
                 String o_comment1 = item.getString(TAG_o_comment);
                 String image_one1 = item.getString(TAG_image_one);
-                /*String image_two1 = item.getString(TAG_image_two);
-                String image_three1 = item.getString(TAG_image_three);*/
 
                 user_storereview_list personalData = new user_storereview_list();
 
@@ -332,9 +262,6 @@ public class user_storereview extends Fragment {
                 personalData.setMember_items(items1);
                 personalData.setMember_o_comment(o_comment1);
                 personalData.setMember_image1(image_one1);
-                /*personalData.setMember_image2(image_two1);
-                personalData.setMember_image3(image_three1);*/
-
 
                 count++;
 
@@ -347,11 +274,7 @@ public class user_storereview extends Fragment {
                 mArrayList.add(personalData);
                 mAdapter.notifyDataSetChanged();
             }
-
-
-
         } catch (JSONException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
 

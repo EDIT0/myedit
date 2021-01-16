@@ -1,7 +1,5 @@
 package com.example.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +27,6 @@ public class user_signup4 extends Activity {
         });
 
         go_to_login = (Button) findViewById(R.id.layout4_b1);
-
         go_to_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(user_signup4.this, user_login.class);

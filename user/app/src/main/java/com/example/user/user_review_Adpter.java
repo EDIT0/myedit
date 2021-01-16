@@ -2,46 +2,31 @@ package com.example.user;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 
@@ -54,12 +39,8 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
     String result="";
     String newFilePath="";
 
-
-
     private ArrayList<user_review_list> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
-    public user_main1 um1 = new user_main1();
 
     String user_name;
     String user_address;
@@ -67,8 +48,6 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
     Double user_long;
     String user_id;
     String user_address_detail;
-    private String SaveFolderPath;
-
 
     public user_review_Adpter(Activity context, ArrayList<user_review_list> list, String user_name, String user_address,
                                    Double user_lat, Double user_long, String user_id, String user_address_detail) {
@@ -82,7 +61,6 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
         this.user_address_detail = user_address_detail;
     }
 
-
     class CustomViewHolder extends RecyclerView.ViewHolder {
         protected TextView s_name;
         protected TextView date;
@@ -92,8 +70,6 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
         protected LinearLayout privatereview;
         protected TextView temp,start;
         protected ImageButton iv1,iv2,iv3;
-
-
 
         public CustomViewHolder(View view) {
             super(view);
@@ -106,14 +82,9 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
             this.temp = (TextView) view.findViewById(R.id.temp);
             this.start = (TextView) view.findViewById(R.id.start);
             this.iv1 = view.findViewById(R.id.image1);
-            /*this.iv2 = (ImageView) view.findViewById(R.id.image2);
-            this.iv3 = (ImageView) view.findViewById(R.id.image3);*/
-
         }
 
-
     }
-
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -133,9 +104,7 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
         viewholder.content.setText(mList.get(position).getMember_content());
         viewholder.items.setText(mList.get(position).getMember_items());
 
-
-
-        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage"); // 저장 경로
+        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage");
         if (!saveFile.exists()) {
             saveFile.mkdir();
         } else {
@@ -189,13 +158,6 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
         viewholder.iv1.setImageBitmap(bm);
         del_file();
 
-
-
-        /*Toast.makeText(context.getApplicationContext(), mList.get(position).getMember_image1(),Toast.LENGTH_LONG).show();
-        Toast.makeText(context.getApplicationContext(), mList.get(position).getMember_image2(),Toast.LENGTH_LONG).show();
-        Toast.makeText(context.getApplicationContext(), mList.get(position).getMember_image3(),Toast.LENGTH_LONG).show();*/
-
-
         if(mList.get(position).getMember_o_comment().length()==0){
             viewholder.start.setText(null);
             viewholder.temp.setText(null);
@@ -203,9 +165,7 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
         else{
             viewholder.start.setText("사장님: ");
             viewholder.temp.setText(mList.get(position).getMember_o_comment());
-
         }
-
 
         viewholder.iv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,31 +184,9 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
                     e.printStackTrace();
                 }
 
-
                 context.startActivity(intent);
             }
         });
-
-
-
-        /*viewholder.b1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(), user_order_record2.class);
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("user_address",user_address);
-                intent.putExtra("user_lat",user_lat);
-                intent.putExtra("user_long",user_long);
-                intent.putExtra("user_id",user_id);
-                intent.putExtra("user_address_detail",user_address_detail);
-                intent.putExtra("store_name",s_name);
-                intent.putExtra("date",date);
-
-                context.startActivity(intent);
-            }
-        });*/
-
 
         viewholder.privatereview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,11 +200,9 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
                 intent.putExtra("user_address_detail",user_address_detail);
                 intent.putExtra("title",mList.get(position).getMember_s_name());
 
-
                 context.startActivity(intent);
             }
         });
-
 
     }
 
@@ -274,8 +210,6 @@ public class user_review_Adpter extends RecyclerView.Adapter<user_review_Adpter.
     public int getItemCount() {
         return (null != mList ? mList.size() : 0);
     }
-
-
 
     public user_review_Adpter(){  //생성자추가
         mFTPClient = new FTPClient();

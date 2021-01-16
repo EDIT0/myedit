@@ -24,59 +24,6 @@
             />
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/layout2_1"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_weight="0.1"-->
-    <!--        android:layout_gravity="center"-->
-
-    <!--        android:gravity="center"-->
-    <!--        android:orientation="vertical">-->
-
-    <!--        &lt;!&ndash;<View-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="2dp"-->
-    <!--            android:background="#FF000000"-->
-    <!--            />&ndash;&gt;-->
-
-    <!--        <FrameLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content">-->
-
-    <!--            <Button-->
-    <!--                android:id="@+id/layout2_b1"-->
-    <!--                android:layout_width="30dp"-->
-    <!--                android:layout_height="30dp"-->
-    <!--                android:layout_gravity="left"-->
-    <!--                android:layout_margin="10dp"-->
-    <!--                android:background="@drawable/arrow_back">-->
-
-    <!--            </Button>-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:layout_marginTop="5dp"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:text="회원가입"-->
-    <!--                android:textSize="30dp"-->
-    <!--                android:textStyle="bold"-->
-    <!--                android:gravity="center"-->
-    <!--                android:fontFamily="@font/title2">-->
-    <!--                -->
-    <!--            </TextView>-->
-    <!--        </FrameLayout>-->
-
-    <!--        <View-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="2dp"-->
-    <!--            android:background="#FF000000"-->
-    <!--            />-->
-
-    <!--    </LinearLayout>-->
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"

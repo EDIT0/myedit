@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -42,7 +41,6 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
 
     private ArrayList<see_others_review_list> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
     public user_main1 um1 = new user_main1();
 
     String user_name;
@@ -52,8 +50,6 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
     String user_id;
     String user_address_detail;
     String store_name;
-
-
 
     public see_others_review_Adpter(Activity context, ArrayList<see_others_review_list> list, String store_name, String user_name, String user_address,
                                     Double user_lat, Double user_long, String user_id, String user_address_detail) {
@@ -79,8 +75,6 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
         protected TextView temp,start;
         protected ImageButton iv1,iv2,iv3;
 
-
-
         public CustomViewHolder(View view) {
             super(view);
             this.s_name = (TextView) view.findViewById(R.id.s_name);
@@ -92,12 +86,7 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
             this.temp = (TextView) view.findViewById(R.id.temp);
             this.start = (TextView) view.findViewById(R.id.start);
             this.iv1 = view.findViewById(R.id.image1);
-            /*this.iv2 = (ImageView) view.findViewById(R.id.image2);
-            this.iv3 = (ImageView) view.findViewById(R.id.image3);*/
-
         }
-
-
     }
 
 
@@ -119,13 +108,12 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
         viewholder.content.setText(mList.get(position).getMember_content());
         viewholder.items.setText(mList.get(position).getMember_items());
 
-        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage"); // 저장 경로
+        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage");
         if (!saveFile.exists()) {
             saveFile.mkdir();
         } else {
             Log.d(TAG, "이미 만들어졌음");
         }
-
 
         String path = mList.get(position).getMember_image1();
         if(path.equals("a")){
@@ -183,7 +171,6 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
 
         }
 
-
         viewholder.iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,27 +193,6 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
             }
         });
 
-
-
-        /*viewholder.b1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(), user_order_record2.class);
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("user_address",user_address);
-                intent.putExtra("user_lat",user_lat);
-                intent.putExtra("user_long",user_long);
-                intent.putExtra("user_id",user_id);
-                intent.putExtra("user_address_detail",user_address_detail);
-                intent.putExtra("store_name",s_name);
-                intent.putExtra("date",date);
-
-                context.startActivity(intent);
-            }
-        });*/
-
-
         viewholder.privatereview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -243,15 +209,12 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
                 context.startActivity(intent);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return (null != mList ? mList.size() : 0);
     }
-
 
     public see_others_review_Adpter(){  //생성자추가
         mFTPClient = new FTPClient();
@@ -297,6 +260,7 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
         }
         return result;
     }
+
     void del_file(){
         Log.d(TAG,"지워져라");
         String a = Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage";
@@ -304,14 +268,12 @@ public class see_others_review_Adpter extends RecyclerView.Adapter<see_others_re
         File[] childFileList = dir.listFiles();
         if (dir.exists()) {
             for (File childFile : childFileList) {
-                childFile.delete(); //하위 파일
+                childFile.delete();
             }
 
             dir.delete();
         }
     }
-
-
 
 }
 

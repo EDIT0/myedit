@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="15dp"
-                        android:text="공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n"></TextView>
+                        android:text="1.업데이트 예정\n2.만족 설문"></TextView>
 
                 </LinearLayout>
 
@@ -87,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="15dp"
-                        android:text="공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n공지사항을 씁시다.\n"></TextView>
+                        android:text="공백"></TextView>
 
                 </LinearLayout>
 
@@ -104,9 +104,5 @@
         app:headerLayout="@layout/navi_header"
         app:menu="@menu/menu1"/>
     />
-
-
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

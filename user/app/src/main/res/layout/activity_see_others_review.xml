@@ -10,11 +10,6 @@
     android:weightSum="10"
     >
 
-    <!-- u_id 유저이름
-
-     -->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

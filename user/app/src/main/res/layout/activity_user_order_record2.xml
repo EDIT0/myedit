@@ -258,43 +258,6 @@
             android:textSize="15dp"
             android:layout_marginLeft="50dp"/>
 
-    </LinearLayout>-->
-
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="직접배달여부: "
-            android:textSize="19dp"/>
-
-        <TextView
-            android:id="@+id/yes_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="19dp"/>
-
-        <Button
-            android:id="@+id/change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textSize="15dp"
-            android:text="변경"/>
-
-        <Button
-            android:id="@+id/call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="완료"
-            android:textSize="15dp"
-            android:layout_marginLeft="50dp"/>
-
-    </LinearLayout>-->
+    </LinearLayout>
 
 </LinearLayout>

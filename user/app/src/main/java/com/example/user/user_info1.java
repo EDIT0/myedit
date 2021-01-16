@@ -1,10 +1,8 @@
 package com.example.user;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,9 +35,6 @@ public class user_info1 extends Activity {
     private EditText et1,et2,et3,et4;
 
     private long backBtnTime = 0;
-
-    public user_info1() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +70,6 @@ public class user_info1 extends Activity {
         et2.setHint("0"+String.valueOf(user_number1));
         et3.setHint(user_email1);
 
-
-
-
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +84,7 @@ public class user_info1 extends Activity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(user_info1.this);
                 builder.setTitle("알림");
                 builder.setMessage("비밀번호가 변경되었습니다.");
-                AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                AlertDialog alert = builder.create();
                 alert.show();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -100,8 +92,8 @@ public class user_info1 extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String user_name  = jsonObject.getString("user_name");
                                 String user_address = jsonObject.getString("user_address");
                                 Double user_lat = jsonObject.getDouble("user_lat");
@@ -125,7 +117,6 @@ public class user_info1 extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확히 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -145,7 +136,6 @@ public class user_info1 extends Activity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*et2 = (EditText) findViewById(R.id.layout_et2);*/
                 String user_password = user_password1;
                 int user_number = Integer.parseInt(et2.getText().toString());
                 String user_email = user_email1;
@@ -154,7 +144,7 @@ public class user_info1 extends Activity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(user_info1.this);
                 builder.setTitle("알림");
                 builder.setMessage("번호가 변경되었습니다.");
-                AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                AlertDialog alert = builder.create();
                 alert.show();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -162,8 +152,8 @@ public class user_info1 extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String user_name  = jsonObject.getString("user_name");
                                 String user_address = jsonObject.getString("user_address");
                                 Double user_lat = jsonObject.getDouble("user_lat");
@@ -187,7 +177,6 @@ public class user_info1 extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확히 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -195,7 +184,6 @@ public class user_info1 extends Activity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 };
                 user_info1_db loginRequest = new user_info1_db(user_password, user_number, user_email, user_id, responseListener);
@@ -207,7 +195,6 @@ public class user_info1 extends Activity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*et3 = (EditText) findViewById(R.id.layout_et3);*/
                 String user_password = user_password1;
                 int user_number = user_number1;
                 String user_email = et3.getText().toString();
@@ -216,7 +203,7 @@ public class user_info1 extends Activity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(user_info1.this);
                 builder.setTitle("알림");
                 builder.setMessage("이메일이 변경되었습니다.");
-                AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                AlertDialog alert = builder.create();
                 alert.show();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -224,8 +211,8 @@ public class user_info1 extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String user_name  = jsonObject.getString("user_name");
                                 String user_address = jsonObject.getString("user_address");
                                 Double user_lat = jsonObject.getDouble("user_lat");
@@ -249,7 +236,6 @@ public class user_info1 extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확히 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -283,8 +269,8 @@ public class user_info1 extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String user_name  = jsonObject.getString("user_name");
                                 String user_address = jsonObject.getString("user_address");
                                 Double user_lat = jsonObject.getDouble("user_lat");
@@ -308,7 +294,6 @@ public class user_info1 extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확히 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -316,7 +301,6 @@ public class user_info1 extends Activity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 };
                 user_info1_db loginRequest = new user_info1_db(user_password, user_number, user_email, user_id, responseListener);
@@ -344,7 +328,6 @@ public class user_info1 extends Activity {
     }
 
     public String change_hash(String text){
-        // SHA-256 MessageDigest의 생성
         MessageDigest mdSHA256 = null;
         try {
             mdSHA256 = MessageDigest.getInstance("SHA-256");
@@ -352,17 +335,14 @@ public class user_info1 extends Activity {
             e.printStackTrace();
         }
 
-        // " Java 마스터! " 문자열 바이트로 메시지 다이제스트를 갱신
         try {
             mdSHA256.update(text.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        // 해시 계산 반환값은 바이트 배열
         byte[] sha256Hash = mdSHA256.digest();
 
-        // 바이트배열을 16진수 문자열로 변환하여 표시
         StringBuilder hexSHA256hash = new StringBuilder();
         for(byte b : sha256Hash) {
             String hexString = String.format("%02x", b);
