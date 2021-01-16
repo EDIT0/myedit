@@ -31,7 +31,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class see_others_review extends Activity {
-
     String user_name1, user_address1;
     Double user_lat1, user_long1;
     String store_name1, user_id1, user_address_detail1, now_user_id1;
