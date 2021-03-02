@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.project1_searchmovie">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".first_loading"></activity>
+        <activity android:name=".commercial_adapter" />
+        <activity android:name=".commercial" />
+        <activity android:name=".independent_adapter" />
+        <activity android:name=".independent" />
+        <activity android:name=".weekend_adapter" />
+        <activity android:name=".weekend" />
+        <activity android:name=".movie_info" />
+        <activity android:name=".my_pocket" />
+        <activity android:name=".foreign_movie_adapter" />
+        <activity android:name=".foreign_movie" />
+        <activity android:name=".korea_movie_adapter" />
+        <activity android:name=".korea_movie" />
+        <activity android:name=".weekday_adapter" />
+        <activity android:name=".weekday" />
+        <activity android:name=".first" />
+        <activity android:name=".day_adapter" />
+        <activity android:name=".day" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

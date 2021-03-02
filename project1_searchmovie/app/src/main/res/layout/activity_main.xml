@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFEB3B">
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button1"
+                    android:text="일별"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_round"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button2"
+                    android:text="주중"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/button_round"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주말"
+                    android:background="@drawable/button_round"
+                    android:id="@+id/button3"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="국내"
+                    android:background="@drawable/button_round"
+                    android:id="@+id/button4"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="외국"
+                    android:background="@drawable/button_round"
+                    android:id="@+id/button5"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="다양성(일별)"
+                    android:background="@drawable/button_round"
+                    android:id="@+id/button6"
+                    android:layout_margin="5dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="상업성(일별)"
+                    android:background="@drawable/button_round"
+                    android:id="@+id/button7"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="담아두기"
+            android:id="@+id/mybutton"
+            android:background="@drawable/button_round"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment"/>
+
+</LinearLayout>

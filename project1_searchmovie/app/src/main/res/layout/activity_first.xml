@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="환영합니다.\n\n본 앱은 분류별 랭크 1 ~ 10위까지의 박스오피스 순위를 제공합니다.\n
+\n감사합니다.\n\nMade by edit"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"/>
+
+</LinearLayout>
