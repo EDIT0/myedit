@@ -1,7 +1,6 @@
 package com.example.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -11,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -30,9 +28,6 @@ public class rider_info extends AppCompatActivity{
     private Button user_ch_info;
     private EditText rider_password1;
     private long backBtnTime = 0;
-
-    TextView get_text;
-
     String rider_name1, rider_address1, rider_id1;
     Double rider_lat1, rider_long1;
 
@@ -66,27 +61,8 @@ public class rider_info extends AppCompatActivity{
         rider_long1 = intent.getDoubleExtra("rider_long",0.0);
         rider_id1 = intent.getStringExtra("rider_id");
 
-
-        //액션바 설정하기//
-        //액션바 타이틀 변경하기
         getSupportActionBar().setTitle("[개인정보]  "+rider_name1+"님");
-        //액션바 배경색 변경
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF4472C4));
-
-        /*menubar= (Button) findViewById(R.id.btn_open);
-        menubar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(user_main1.this , menubar);
-
-
-
-                MenuInflater inf = popup.getMenuInflater();
-                inf.inflate(R.menu.menu1, popup.getMenu());
-                popup.show();
-            }
-        });*/
-
 
         user_ch_info = (Button) findViewById(R.id.layout5_b1);
         user_ch_info.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +78,8 @@ public class rider_info extends AppCompatActivity{
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String rider_name  = jsonObject.getString("rider_name");
                                 String rider_id = jsonObject.getString("rider_id");
                                 String rider_number = jsonObject.getString("rider_number");
@@ -122,7 +98,6 @@ public class rider_info extends AppCompatActivity{
                                 intent.putExtra("rider_email",rider_email);
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확한 아이디/패스워드를 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -146,16 +121,12 @@ public class rider_info extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu1, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch(item.getItemId()){
@@ -205,13 +176,9 @@ public class rider_info extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClick(View v){
-
-    }
 
 
     public String change_hash(String text){
-        // SHA-256 MessageDigest의 생성
         MessageDigest mdSHA256 = null;
         try {
             mdSHA256 = MessageDigest.getInstance("SHA-256");
@@ -219,17 +186,14 @@ public class rider_info extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        // " Java 마스터! " 문자열 바이트로 메시지 다이제스트를 갱신
         try {
             mdSHA256.update(text.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        // 해시 계산 반환값은 바이트 배열
         byte[] sha256Hash = mdSHA256.digest();
 
-        // 바이트배열을 16진수 문자열로 변환하여 표시
         StringBuilder hexSHA256hash = new StringBuilder();
         for(byte b : sha256Hash) {
             String hexString = String.format("%02x", b);

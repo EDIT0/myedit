@@ -2,19 +2,14 @@ package com.example.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PointF;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -25,11 +20,6 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraAnimation;
 import com.naver.maps.map.CameraUpdate;
@@ -61,16 +51,9 @@ public class rider_signup3 extends FragmentActivity
     private FusedLocationSource locationSource;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private NaverMap naverMap;
-
-    private FragmentManager fragmentManager;
-    private MapFragment mapFragment;
     private Button user_signup_back, user_signup_go;
     private EditText user_address_detail1;
-    private GoogleMap mMap;
-
     String set_address, user_id1, user_address_detail;
-
-
     Double user_lat, user_long;
     String user_address, user_id;
 
@@ -98,7 +81,6 @@ public class rider_signup3 extends FragmentActivity
         user_signup_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //현재 입력되어 있는 값을 가져온다(get)
                 try {
                     user_lat = latitude;
                     user_long = longitude;
@@ -115,13 +97,12 @@ public class rider_signup3 extends FragmentActivity
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if (success) { //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if (success) {
                                 Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(rider_signup3.this, login.class);
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else {
                                 Toast.makeText(getApplicationContext(), "회원가입 실패", Toast.LENGTH_SHORT).show();
                                 return;
@@ -136,23 +117,9 @@ public class rider_signup3 extends FragmentActivity
                 RequestQueue queue = Volley.newRequestQueue(rider_signup3.this);
                 queue.add(registerRequest);
             }
-            /*public void onClick(View v) {
-                Intent intent = new Intent(owner_signup3.this, owner_signup4.class);
-                startActivity(intent);
-            }*/
-            // set_address 값을 db에 저장 후 불러오기
-                /*Toast.makeText(getApplicationContext(), ""+set_address, Toast.LENGTH_SHORT).show();
-                Intent intent2 = new Intent(user_signup3.this,user_main.class);
-                intent2.putExtra("set_address",set_address);
-                startActivity(intent2);*/
         });
 
-        /*fragmentManager = getFragmentManager();
-        mapFragment = (MapFragment) fragmentManager.findFragmentById(R.id.googlemap);
-        mapFragment.getMapAsync(this);*/
-
-        locationSource =
-                new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
         com.naver.maps.map.MapFragment mapFragment = (com.naver.maps.map.MapFragment)fm.findFragmentById(R.id.map);
@@ -162,85 +129,14 @@ public class rider_signup3 extends FragmentActivity
         }
 
         mapFragment.getMapAsync(this);
-
-
     }
-
-    /*@Override
-    public void onMapReady(final GoogleMap googleMap) {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
-
-        *//*마커*//*
-        LatLng location = new LatLng(36.620784, 127.287240);
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.title("홍익대학교 세종캠퍼스");
-        markerOptions.snippet("교육기관");
-        markerOptions.position(location);
-        googleMap.addMarker(markerOptions);
-
-        *//*googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));*//*
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location,16));
-
-        googleMap.setMyLocationEnabled(true);
-        googleMap.setOnMyLocationButtonClickListener(this);
-        googleMap.setOnMyLocationButtonClickListener(this);
-
-
-
-        final Geocoder g = new Geocoder(this);
-        mMap = googleMap;
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
-            @Override
-            public void onMapClick(LatLng point) {
-                MarkerOptions mOptions = new MarkerOptions();
-                // 마커 타이틀
-                mOptions.title("이곳으로 설정하기!");
-                latitude = point.latitude; // 위도
-                longitude = point.longitude; // 경도
-                // 마커의 스니펫(간단한 텍스트) 설정
-                *//*mOptions.snippet(latitude.toString() + ", " + longitude.toString());*//*
-                // LatLng: 위도 경도 쌍을 나타냄
-                mOptions.position(new LatLng(latitude, longitude));
-
-                googleMap.clear();
-
-                // 마커(핀) 추가
-                googleMap.addMarker(mOptions);
-
-                try {
-                    a = g.getFromLocation(latitude,longitude,1);
-                    Toast.makeText(getApplicationContext(), ""+a.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
-                    set_address = a.get(0).getAddressLine(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
-                *//*Double temp1 = latitude;
-                Double temp2 = longitude;
-                if (latitude == temp1 || longitude == temp2){
-                    googleMap.remove
-                }*//*
-            }
-        });
-    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,  @NonNull int[] grantResults) {
         if (locationSource.onRequestPermissionsResult(
                 requestCode, permissions, grantResults)) {
-            if (!locationSource.isActivated()) { // 권한 거부됨
+            if (!locationSource.isActivated()) {
                 naverMap.setLocationTrackingMode(LocationTrackingMode.None);
             }
             return;
@@ -279,15 +175,12 @@ public class rider_signup3 extends FragmentActivity
         naverMap.setOnMapClickListener(new NaverMap.OnMapClickListener(){
             @Override
             public void onMapClick(@NonNull PointF pointF, @NonNull com.naver.maps.geometry.LatLng latLng) {
-                /*Toast.makeText(getApplicationContext(), latLng.latitude + ", " + latLng.longitude+"", Toast.LENGTH_SHORT).show();*/
                 marker.setPosition(new LatLng( latLng.latitude,latLng.longitude));
                 marker.setMap(naverMap);
                 latitude=latLng.latitude;
                 longitude=latLng.longitude;
 
                 infoWindow.open(marker);
-
-                /*naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);*/
 
                 try {
                     a = g.getFromLocation(latitude,longitude,1);
@@ -300,38 +193,19 @@ public class rider_signup3 extends FragmentActivity
             }
         });
 
-
-        /*LatLng coord = new LatLng(37.5670135, 126.9783740);
-
-        Toast.makeText(getApplication(),
-                "위도: " + coord.latitude + ", 경도: " + coord.longitude,
-                Toast.LENGTH_SHORT).show();*/
     }
 
 
     public void checkPermission(){
-        //현재 안드로이드 버전이 6.0미만이면 메서드를 종료한다.
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return;
 
         for(String permission : permission_list){
-            //권한 허용 여부를 확인한다.
             int chk = checkCallingOrSelfPermission(permission);
 
             if(chk == PackageManager.PERMISSION_DENIED){
-                //권한 허용을여부를 확인하는 창을 띄운다
                 requestPermissions(permission_list,0);
             }
         }
     }
-
-    /*@Override
-    public boolean onMyLocationButtonClick() {
-        return false;
-    }
-
-    @Override
-    public void onMyLocationClick(@NonNull Location location) {
-
-    }*/
 }

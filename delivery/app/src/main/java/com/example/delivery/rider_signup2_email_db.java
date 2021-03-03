@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class rider_signup2_email_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/rider_signup_email_db.php";
     private Map<String, String> map;
 
@@ -19,8 +18,6 @@ public class rider_signup2_email_db extends StringRequest {
 
         map.put("rider_email",rider_email);
         map.put("num",num);
-
-
     }
 
     @Override

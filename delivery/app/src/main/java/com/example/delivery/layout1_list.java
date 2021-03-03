@@ -15,11 +15,9 @@ public class layout1_list {
     public String getMember_u_address() {
         return member_u_address;
     }
-
     public String getMember_s_address() {
         return member_s_address;
     }
-
     public String getMember_price() {
         return member_price;
     }
@@ -35,7 +33,6 @@ public class layout1_list {
     public String getMember_d_type() {
         return member_d_type;
     }
-
     public String getMember_a() {
         return member_a;
     }
@@ -48,7 +45,6 @@ public class layout1_list {
     public void setMember_s_address(String member_s_address) {
         this.member_s_address = member_s_address;
     }
-
     public void setMember_price(String member_price) {
         this.member_price = member_price;
     }
@@ -70,33 +66,3 @@ public class layout1_list {
     }
 
 }
-
-/*
-public class Human {
-    public String name;
-    public String gender;
-    public String age;
-    public int image;
-
-    public String getName() {
-        return name;
-    }
-    public String getAge(){
-        return age;
-    }
-    public String getGender(){
-        return gender;
-    }
-    public int getImage(){
-        return image;
-    }
-
-    Human(String name, String gender, String age, int image){
-        this.image = image;
-        this.name =name;
-        this.gender = gender;
-        this.age = age;
-    }
-
-
-}*/

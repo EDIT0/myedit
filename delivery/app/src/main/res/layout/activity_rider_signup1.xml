@@ -21,12 +21,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <!--<View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#FF000000"
-            />-->
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -292,23 +286,6 @@
 
 
     </LinearLayout>
-
-    <!--<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout2_1"
-        android:fillViewport="true"
-
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="안녕"
-            >
-
-        </TextView>
-    </ScrollView>-->
-
 
 
 </LinearLayout>

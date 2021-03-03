@@ -1,33 +1,17 @@
 package com.example.delivery;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class rider_gongji extends AppCompatActivity{
 
-    private DrawerLayout drawerLayout;
-    private View drawerView;
     private long backBtnTime = 0;
-
-    TextView get_text;
-
-    Button b1,b2,b3,b4,b5,b6,b7,b8, menubar;
 
     @Override
     public void onBackPressed() {
@@ -60,43 +44,18 @@ public class rider_gongji extends AppCompatActivity{
         rider_id1 = intent.getStringExtra("rider_id");
 
 
-        //액션바 설정하기//
-        //액션바 타이틀 변경하기
         getSupportActionBar().setTitle("[공지사항]  "+rider_name1+"님");
-        //액션바 배경색 변경
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF4472C4));
-        /*menubar= (Button) findViewById(R.id.btn_open);
-        menubar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(user_main1.this , menubar);
-
-
-
-                MenuInflater inf = popup.getMenuInflater();
-                inf.inflate(R.menu.menu1, popup.getMenu());
-                popup.show();
-            }
-        });*/
-
-
-
-
-
 
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu1, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch(item.getItemId()){
@@ -146,8 +105,4 @@ public class rider_gongji extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClick(View v){
-
-    }
-
 }

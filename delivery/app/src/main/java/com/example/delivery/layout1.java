@@ -2,7 +2,6 @@ package com.example.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -14,8 +13,6 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -27,7 +24,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -35,17 +31,14 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.delivery.MainActivity.rider_id1;
 import static com.example.delivery.MainActivity.rider_name1;
@@ -56,22 +49,17 @@ import static com.example.delivery.MainActivity.rider_lat1;
 public class layout1 extends Fragment {
 
     ViewGroup viewGroup;
-
     TextView tv1;
     ImageView iv1;
-
     int count = 0;
-    String TAG = "phptest";
-
+    String TAG = "TAG";
     TextView mTextViewResult;
     ArrayList<layout1_list> mArrayList;
     layout1_Adpter mAdapter;
     RecyclerView mRecyclerView;
     String mJsonString;
 
-
     int status = 0;
-
     private LocationManager locationManager;
     private static final int REQUEST_CODE_LOCATION = 2;
     double latitude;
@@ -84,16 +72,11 @@ public class layout1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.activity_layout1, container, false);
 
-        /*latlong = viewGroup.findViewById(R.id.latlong);*/
         Log.d("Main", "onCreate");
 
-        /*logView = (TextView) viewGroup.findViewById(R.id.latlong);*/
-        /*logView.setText("GPS 불러오는 중.....");*/
         LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
 
-        // GPS 프로바이더 사용가능여부
         boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        // 네트워크 프로바이더 사용가능여부
         boolean isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         Log.d("Main", "isGPSEnabled=" + isGPSEnabled);
@@ -103,8 +86,6 @@ public class layout1 extends Fragment {
             public void onLocationChanged(Location location) {
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
-
-                /*logView.setText("latitude: " + lat + ", longitude: " + lng);*/
 
                 latitude = lat;
                 longitude = lng;
@@ -137,7 +118,6 @@ public class layout1 extends Fragment {
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-        // 수동으로 위치 구하기
         String locationProvider = LocationManager.GPS_PROVIDER;
         Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
         if (lastKnownLocation != null) {
@@ -150,11 +130,9 @@ public class layout1 extends Fragment {
         mTextViewResult = (TextView)viewGroup.findViewById(R.id.textView_main_result);
         mRecyclerView = (RecyclerView) viewGroup.findViewById(R.id.listView_main_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         mArrayList = new ArrayList<>();
-
         mAdapter = new layout1_Adpter(getActivity(), rider_id1, mArrayList);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -178,8 +156,6 @@ public class layout1 extends Fragment {
                     mAdapter.notifyDataSetChanged();
                     status=1;
 
-
-
                     layout1.GetData task = new layout1.GetData();
                     task.execute("http://edit0.dothome.co.kr/layout1_db_for_smart.php",rider_id1,rider_name1,rider_address1,String.valueOf(latitude),String.valueOf(longitude));
 
@@ -188,8 +164,6 @@ public class layout1 extends Fragment {
                     mArrayList.clear();
                     mAdapter.notifyDataSetChanged();
                     status=0;
-
-
 
                     layout1.GetData task = new layout1.GetData();
                     task.execute("http://edit0.dothome.co.kr/layout1_db.php",rider_id1,rider_name1,rider_address1,String.valueOf(rider_lat1),String.valueOf(rider_long1));
@@ -223,7 +197,6 @@ public class layout1 extends Fragment {
             }
         });
 
-
         tv1 = viewGroup.findViewById(R.id.backtext);
         iv1 = viewGroup.findViewById(R.id.backimage);
         if(count==0) {
@@ -231,8 +204,6 @@ public class layout1 extends Fragment {
             iv1.setVisibility(View.VISIBLE);
             tv1.setVisibility(View.VISIBLE);
         }
-
-
 
         return viewGroup;
     }
@@ -258,11 +229,9 @@ public class layout1 extends Fragment {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null){
-
                 mTextViewResult.setText(errorString);
             }
             else {
@@ -276,21 +245,13 @@ public class layout1 extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "rider_id=" + params[1] + "&rider_name=" + params[2] + "&rider_address=" + params[3] +
                     "&rider_lat=" + params[4] + "&rider_long=" + params[5];
-            /*"user_lat=" + params[1] + "&user_long=" + params[2];*/
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -298,12 +259,10 @@ public class layout1 extends Fragment {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -315,7 +274,6 @@ public class layout1 extends Fragment {
                 else{
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -331,9 +289,7 @@ public class layout1 extends Fragment {
 
                 return sb.toString().trim();
 
-
             } catch (Exception e) {
-
                 Log.d(TAG, "GetData : Error ", e);
                 errorString = e.toString();
 

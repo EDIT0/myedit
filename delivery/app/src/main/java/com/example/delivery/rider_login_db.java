@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class rider_login_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/rider_login.php";
     private Map<String, String> map;
 

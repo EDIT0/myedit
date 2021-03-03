@@ -2,7 +2,6 @@ package com.example.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,22 +40,16 @@ import static com.example.delivery.MainActivity.rider_lat1;
 public class layout2 extends Fragment {
 
     ViewGroup viewGroup;
-
     TextView tv1;
     ImageView iv1;
-
     int count=0;
 
+    String TAG = "TAG";
 
-    String TAG = "phptest";
-
-    EditText mEditTextName;
-    EditText mEditTextCountry;
     TextView mTextViewResult;
     ArrayList<layout2_list> mArrayList;
     layout2_Adpter mAdapter;
     RecyclerView mRecyclerView;
-    EditText mEditTextSearchKeyword;
     String mJsonString;
 
 
@@ -73,7 +65,6 @@ public class layout2 extends Fragment {
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         mArrayList = new ArrayList<>();
-
         mAdapter = new layout2_Adpter(getActivity(), rider_id1,rider_name1,rider_address1,rider_lat1,rider_long1, mArrayList);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -82,11 +73,8 @@ public class layout2 extends Fragment {
 
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
 
-
         layout2.GetData task = new layout2.GetData();
         task.execute("http://edit0.dothome.co.kr/layout2_db.php", rider_id1, rider_name1, rider_address1, String.valueOf(rider_lat1), String.valueOf(rider_long1));
-
-
 
         final SwipeRefreshLayout srfl = viewGroup.findViewById(R.id.swipe_refresh_layout);
 
@@ -111,10 +99,6 @@ public class layout2 extends Fragment {
             iv1.setVisibility(View.VISIBLE);
             tv1.setVisibility(View.VISIBLE);
         }
-
-
-
-
         return viewGroup;
     }
 
@@ -138,14 +122,12 @@ public class layout2 extends Fragment {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null) {
 
                 mTextViewResult.setText(errorString);
             } else {
-
                 mJsonString = result;
                 showResult();
             }
@@ -155,21 +137,13 @@ public class layout2 extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "rider_id=" + params[1] + "&rider_name=" + params[2] + "&rider_address=" + params[3] +
                     "&rider_lat=" + params[4] + "&rider_long=" + params[5];
-            /*"user_lat=" + params[1] + "&user_long=" + params[2];*/
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -177,12 +151,10 @@ public class layout2 extends Fragment {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -193,7 +165,6 @@ public class layout2 extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -208,8 +179,6 @@ public class layout2 extends Fragment {
                 bufferedReader.close();
 
                 return sb.toString().trim();
-
-
             } catch (Exception e) {
 
                 Log.d(TAG, "GetData : Error ", e);
@@ -232,7 +201,6 @@ public class layout2 extends Fragment {
         String TAG_u_number = "u_number";
         String TAG_s_number = "o_number";
         String TAG_d_type = "d_type";
-
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);

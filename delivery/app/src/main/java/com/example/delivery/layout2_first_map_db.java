@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class layout2_first_map_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/layout2_first_map_db.php";
     private Map<String, String> map;
 
@@ -22,8 +21,6 @@ public class layout2_first_map_db extends StringRequest {
         map.put("u_number",u_number);
         map.put("s_address",s_address);
         map.put("s_number",s_number);
-
-
     }
 
     @Override

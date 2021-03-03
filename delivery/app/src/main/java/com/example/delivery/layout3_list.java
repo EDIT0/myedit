@@ -5,8 +5,6 @@ public class layout3_list {
     private String member_r_price;
     private String member_d_type;
 
-
-
     public String getMember_temp_date() {
         return member_temp_date;
     }
@@ -16,8 +14,6 @@ public class layout3_list {
     public String getMember_d_type() {
         return member_d_type;
     }
-
-
 
 
     public void setMember_temp_date(String member_temp_date) {
@@ -31,33 +27,3 @@ public class layout3_list {
     }
 
 }
-
-/*
-public class Human {
-    public String name;
-    public String gender;
-    public String age;
-    public int image;
-
-    public String getName() {
-        return name;
-    }
-    public String getAge(){
-        return age;
-    }
-    public String getGender(){
-        return gender;
-    }
-    public int getImage(){
-        return image;
-    }
-
-    Human(String name, String gender, String age, int image){
-        this.image = image;
-        this.name =name;
-        this.gender = gender;
-        this.age = age;
-    }
-
-
-}*/

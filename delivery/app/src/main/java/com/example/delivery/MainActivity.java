@@ -2,14 +2,12 @@ package com.example.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static String rider_name1, rider_address1,rider_id1;
     public static Double rider_lat1, rider_long1;
-
-
     private long backBtnTime = 0;
+
     @Override
     public void onBackPressed() {
         long curTime = System.currentTimeMillis();
@@ -48,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         Intent intent = getIntent();
         rider_name1 = intent.getStringExtra("rider_name");
         rider_address1 = intent.getStringExtra("rider_address");
@@ -57,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         rider_long1 = intent.getDoubleExtra("rider_long",0.0);
         rider_id1 = intent.getStringExtra("rider_id");
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView); //프래그먼트 생성
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         fragment1 = new layout1();
         fragment2 = new layout2();
         fragment3 = new layout3();
@@ -66,11 +61,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xFF4472C4));
 
 
-        //제일 처음 띄워줄 뷰를 세팅해줍니다. commit();까지 해줘야 합니다.
         getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,fragment1).commitAllowingStateLoss();
 
-
-        //bottomnavigationview의 아이콘을 선택 했을때 원하는 프래그먼트가 띄워질 수 있도록 리스너를 추가합니다.
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -97,16 +89,12 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu1, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch(item.getItemId()){
@@ -156,7 +144,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void onClick(View v){
 
-    }
 }

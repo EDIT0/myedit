@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class layout1_Adpter_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/layout1_Adpter_db.php";
     private Map<String, String> map;
 
@@ -24,9 +23,6 @@ public class layout1_Adpter_db extends StringRequest {
         map.put("price",price);
         map.put("items",items);
         map.put("d_type",d_type);
-
-
-
     }
 
     @Override

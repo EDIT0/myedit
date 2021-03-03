@@ -1,19 +1,13 @@
 package com.example.delivery;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.database.CursorJoiner;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Intent;
-import android.net.Uri;
-
 
 public class rider_signup1 extends Activity {
 

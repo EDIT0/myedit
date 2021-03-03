@@ -2,7 +2,6 @@ package com.example.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +16,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,24 +40,16 @@ import static com.example.delivery.MainActivity.rider_lat1;
 public class layout3 extends Fragment {
 
     ViewGroup viewGroup;
-
     TextView tv1;
     ImageView iv1;
-
     int count=0;
+    String TAG = "TAG";
 
-
-    String TAG = "phptest";
-
-    EditText mEditTextName;
-    EditText mEditTextCountry;
     TextView mTextViewResult;
     ArrayList<layout3_list> mArrayList;
     layout3_Adpter mAdapter;
     RecyclerView mRecyclerView;
-    EditText mEditTextSearchKeyword;
     String mJsonString;
-
 
     @Nullable
     @Override
@@ -73,7 +63,6 @@ public class layout3 extends Fragment {
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
         mArrayList = new ArrayList<>();
-
         mAdapter = new layout3_Adpter(getActivity(), rider_id1, mArrayList);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -111,8 +100,6 @@ public class layout3 extends Fragment {
             tv1.setVisibility(View.VISIBLE);
         }
 
-
-
         return viewGroup;
     }
 
@@ -136,7 +123,6 @@ public class layout3 extends Fragment {
             super.onPostExecute(result);
 
             progressDialog.dismiss();
-            /*mTextViewResult.setText(result);*/
             Log.d(TAG, "response - " + result);
 
             if (result == null) {
@@ -153,21 +139,13 @@ public class layout3 extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            /*String serverURL = params[0];
-            String postParameters = params[1];*/
-            /*String user_lat = (String)params[1];
-            String user_long = (String)params[2];*/
-
             String serverURL = params[0];
             String postParameters = "rider_id=" + params[1] + "&rider_name=" + params[2] + "&rider_address=" + params[3] +
                     "&rider_lat=" + params[4] + "&rider_long=" + params[5];
-            /*"user_lat=" + params[1] + "&user_long=" + params[2];*/
 
             try {
-
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
@@ -175,12 +153,10 @@ public class layout3 extends Fragment {
                 httpURLConnection.setDoInput(true);
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "response code - " + responseStatusCode);
@@ -191,7 +167,6 @@ public class layout3 extends Fragment {
                 } else {
                     inputStream = httpURLConnection.getErrorStream();
                 }
-
 
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -207,9 +182,7 @@ public class layout3 extends Fragment {
 
                 return sb.toString().trim();
 
-
             } catch (Exception e) {
-
                 Log.d(TAG, "GetData : Error ", e);
                 errorString = e.toString();
 
@@ -227,14 +200,11 @@ public class layout3 extends Fragment {
         String TAG_r_price = "r_price";
         String TAG_d_type = "d_type";
 
-
-
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for (int i = 0; i < jsonArray.length(); i++) {
-
                 JSONObject item = jsonArray.getJSONObject(i);
 
                 String temp_date1 = item.getString(TAG_temp_date);
@@ -260,7 +230,6 @@ public class layout3 extends Fragment {
 
 
         } catch (JSONException e) {
-
             Log.d(TAG, "showResult : ", e);
         }
 

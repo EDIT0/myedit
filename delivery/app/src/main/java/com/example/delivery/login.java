@@ -1,7 +1,5 @@
 package com.example.delivery;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
@@ -62,14 +60,6 @@ public class login extends Activity {
             }
         });
 
-        /*findyourid = (Button) findViewById(R.id.layout5_b1);
-        findyourid.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(user_login.this, forgot_id_pw.class);
-                startActivity(intent);
-            }
-        });*/
-
         user_login = (Button) findViewById(R.id.layout5_b2);
         user_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,23 +74,20 @@ public class login extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
-                                /////////////////////// 파일 쓰기 ///////////////////////
-                                // 파일 생성
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/account"); // 저장 경로
                                 // 폴더 생성
-                                if(!saveFile.exists()){ // 폴더 없을 경우
-                                    saveFile.mkdir(); // 폴더 생성
+                                if(!saveFile.exists()){
+                                    saveFile.mkdir();
                                 }
                                 try {
                                     long now = System.currentTimeMillis(); // 현재시간 받아오기
-                                    Date date = new Date(now); // Date 객체 생성
+                                    Date date = new Date(now);
                                     SimpleDateFormat sdf = new SimpleDateFormat();
                                     String nowTime = sdf.format(date);
 
                                     BufferedWriter buf = new BufferedWriter(new FileWriter(saveFile+"/security2.txt", true));
-                                    /*buf.append(nowTime + " "); // 날짜 쓰기*/
 
                                     buf.append(user_id+" "+u_p); // 파일 쓰기
                                     buf.newLine(); // 개행
@@ -129,7 +116,6 @@ public class login extends Activity {
 
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"정확한 아이디/패스워드를 입력해주세요.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -146,31 +132,28 @@ public class login extends Activity {
             }
         });
 
-        // 파일 생성
-        String line = null; // 한줄씩 읽기
-        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/account"); // 저장 경로
-        // 폴더 생성
-        if(!saveFile.exists()){ // 폴더 없을 경우
-            saveFile.mkdir(); // 폴더 생성
+        String line = null;
+        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/account");
+
+        if(!saveFile.exists()){
+            saveFile.mkdir();
         }
         try {
             BufferedReader buf = new BufferedReader(new FileReader(saveFile+"/security2.txt"));
             while((line=buf.readLine())!=null){
                 StringBuilder tv = new StringBuilder();
                 String info = tv.append(line).toString();
-                /*tv.append("\n");*/
                 String[] arr = info.split(" ");
                 String id = arr[0];
                 String pw = arr[1];
-                /*Toast.makeText(getApplicationContext(),id+pw,Toast.LENGTH_SHORT).show();*/
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String rider_name  = jsonObject.getString("rider_name");
                                 String rider_address = jsonObject.getString("rider_address");
                                 Double rider_lat = jsonObject.getDouble("rider_lat");
@@ -187,7 +170,6 @@ public class login extends Activity {
                                 intent.putExtra("rider_id",rider_id);
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
                                 return;
                             }
@@ -224,7 +206,6 @@ public class login extends Activity {
     }
 
     public String change_hash(String text){
-        // SHA-256 MessageDigest의 생성
         MessageDigest mdSHA256 = null;
         try {
             mdSHA256 = MessageDigest.getInstance("SHA-256");
@@ -232,17 +213,14 @@ public class login extends Activity {
             e.printStackTrace();
         }
 
-        // " Java 마스터! " 문자열 바이트로 메시지 다이제스트를 갱신
         try {
             mdSHA256.update(text.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        // 해시 계산 반환값은 바이트 배열
         byte[] sha256Hash = mdSHA256.digest();
 
-        // 바이트배열을 16진수 문자열로 변환하여 표시
         StringBuilder hexSHA256hash = new StringBuilder();
         for(byte b : sha256Hash) {
             String hexString = String.format("%02x", b);
@@ -252,16 +230,13 @@ public class login extends Activity {
         return hexSHA256hash.toString();
     }
     public void checkPermission(){
-        //현재 안드로이드 버전이 6.0미만이면 메서드를 종료한다.
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return;
 
         for(String permission : permission_list){
-            //권한 허용 여부를 확인한다.
             int chk = checkCallingOrSelfPermission(permission);
 
             if(chk == PackageManager.PERMISSION_DENIED){
-                //권한 허용을여부를 확인하는 창을 띄운다
                 requestPermissions(permission_list,0);
             }
         }

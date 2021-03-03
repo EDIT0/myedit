@@ -26,13 +26,10 @@ import java.util.regex.Pattern;
 public class rider_signup2 extends Activity {
 
     Button user_signup_back, user_signup_go,b1,b2,b3;
-
     EditText et1,et2,et3,et4,et5,et6,et7;
-
     String snum, user_name, user_id, user_password, user_email, user_address, user_address_detail,rider_license_number;
     Double user_lat, user_long;
     int user_number;
-    int ch_id=0;
     int ch_em=0;
     int num;
     String ah_id="",a;
@@ -49,7 +46,6 @@ public class rider_signup2 extends Activity {
                 startActivity(intent);
             }
         });
-
 
         et1 = findViewById(R.id.layout2_et1);
         et2 = findViewById(R.id.layout2_et2);
@@ -73,8 +69,6 @@ public class rider_signup2 extends Activity {
                     user_id = et2.getText().toString();
                     user_id = user_id.replace(" ", "");
 
-                    /*user_email = et4.getText().toString();*/
-
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "입력칸(ID)을 채워주세요.", Toast.LENGTH_SHORT).show();
                 }
@@ -86,14 +80,13 @@ public class rider_signup2 extends Activity {
                         public void onResponse(String response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
-                                boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                                if (success) { //회원등록에 성공한 경우
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success) {
                                     Toast.makeText(getApplicationContext(), "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                                     ah_id = user_id;
                                     et2.setText(ah_id);
                                     et2.setEnabled(false);
                                 }
-                                //실패한 경우
                                 else {
                                     Toast.makeText(getApplicationContext(), "중복된 아이디 또는 특수문자를 사용하였습니다.", Toast.LENGTH_SHORT).show();
                                     return;
@@ -104,17 +97,12 @@ public class rider_signup2 extends Activity {
 
                         }
                     };
-
-                    //서버로 Volley를 이용해서 요청을 함
                     rider_signup2_id_db registerRequest = new rider_signup2_id_db(user_id, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(rider_signup2.this);
                     queue.add(registerRequest);
                 }
             }
         });
-
-
-
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,8 +126,6 @@ public class rider_signup2 extends Activity {
                         }
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 rider_signup2_email_db registerRequest = new rider_signup2_email_db(user_email,snum, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(rider_signup2.this);
                 queue.add(registerRequest);
@@ -154,7 +140,6 @@ public class rider_signup2 extends Activity {
             public void onClick(View v) {
                 String getnum = et6.getText().toString();
                 String realkey = String.valueOf(num);
-                /*et6.setText(realkey);*/
                 if (getnum.equals(realkey)){
                     ch_em=1;
                     et4.setEnabled(false);
@@ -171,7 +156,6 @@ public class rider_signup2 extends Activity {
             public void onClick(View v) {
                 try {
                     user_name = et1.getText().toString();
-                    /*user_id = et2.getText().toString();*/
                     user_password = et3.getText().toString();
                     user_email = et4.getText().toString();
                     user_number = Integer.parseInt(et5.getText().toString());
@@ -186,7 +170,6 @@ public class rider_signup2 extends Activity {
                     user_email=user_email.replace(" ","");
 
                     a = String.valueOf("0"+user_number);
-                    /*Toast.makeText(getApplicationContext(), a, Toast.LENGTH_SHORT).show();*/
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "번호를 공백없이 입력해주세요.", Toast.LENGTH_SHORT).show();
@@ -213,17 +196,15 @@ public class rider_signup2 extends Activity {
                         public void onResponse(String response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
-                                boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                                if (success) { //회원등록에 성공한 경우
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success) {
                                     String user_id = et2.getText().toString();
-                                    /*Toast.makeText(getApplicationContext(),"다음으로",Toast.LENGTH_SHORT).show();*/
 
                                     Intent intent = new Intent(rider_signup2.this, rider_signup3.class);
                                     intent.putExtra("user_id", user_id);
 
                                     startActivity(intent);
                                 }
-                                //실패한 경우
                                 else {
                                     Toast.makeText(getApplicationContext(), "빈칸의 조건 및 중복확인, 인증을 해주세요.", Toast.LENGTH_SHORT).show();
                                     return;
@@ -254,7 +235,6 @@ public class rider_signup2 extends Activity {
     };
 
     public String change_hash(String text){
-        // SHA-256 MessageDigest의 생성
         MessageDigest mdSHA256 = null;
         try {
             mdSHA256 = MessageDigest.getInstance("SHA-256");
@@ -262,17 +242,14 @@ public class rider_signup2 extends Activity {
             e.printStackTrace();
         }
 
-        // " Java 마스터! " 문자열 바이트로 메시지 다이제스트를 갱신
         try {
             mdSHA256.update(user_password.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        // 해시 계산 반환값은 바이트 배열
         byte[] sha256Hash = mdSHA256.digest();
 
-        // 바이트배열을 16진수 문자열로 변환하여 표시
         StringBuilder hexSHA256hash = new StringBuilder();
         for(byte b : sha256Hash) {
             String hexString = String.format("%02x", b);
@@ -280,6 +257,4 @@ public class rider_signup2 extends Activity {
         }
         return hexSHA256hash.toString();
     }
-
-
 }

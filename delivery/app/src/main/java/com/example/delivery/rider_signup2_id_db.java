@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class rider_signup2_id_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/rider_signup_id_db.php";
     private Map<String, String> map;
 
@@ -18,8 +17,6 @@ public class rider_signup2_id_db extends StringRequest {
         map = new HashMap<>();
 
         map.put("rider_id",rider_id);
-
-
     }
 
     @Override
