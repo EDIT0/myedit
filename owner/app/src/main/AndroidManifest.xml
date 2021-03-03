@@ -31,11 +31,6 @@
         <activity android:name=".owner_review_management_reply" />
         <activity android:name=".owner_info1" />
         <activity android:name=".owner_item_add_del_up_del">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity android:name=".owner_item_add_del_add"/>
         <activity android:name=".owner_item_add_del" />
