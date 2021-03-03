@@ -7,17 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -26,15 +18,12 @@ public class owner_order_record_Adpter extends RecyclerView.Adapter<owner_order_
 
     private ArrayList<owner_order_record_list> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
 
     String owner_name;
     String owner_address;
     Double owner_lat;
     Double owner_long;
     String store_name;
-
-
 
     public owner_order_record_Adpter(Activity context, ArrayList<owner_order_record_list> list, String owner_name, String owner_address,
                                      Double owner_lat, Double owner_long, String store_name) {
@@ -45,7 +34,6 @@ public class owner_order_record_Adpter extends RecyclerView.Adapter<owner_order_
         this.owner_lat = owner_lat;
         this.owner_long = owner_long;
         this.store_name = store_name;
-
     }
 
 
@@ -56,7 +44,6 @@ public class owner_order_record_Adpter extends RecyclerView.Adapter<owner_order_
 
         protected Button b1;
 
-
         public CustomViewHolder(View view) {
             super(view);
             this.u_id = (TextView) view.findViewById(R.id.u_id);
@@ -65,8 +52,6 @@ public class owner_order_record_Adpter extends RecyclerView.Adapter<owner_order_
             this.b1 = (Button) view.findViewById(R.id.detail);
 
         }
-
-
     }
 
 
@@ -100,40 +85,12 @@ public class owner_order_record_Adpter extends RecyclerView.Adapter<owner_order_
                 context.startActivityForResult(intent,0);
             }
         });
-
-
-
-
-        /*viewholder.layout_get_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context.getApplicationContext(),ImageActivity.class);
-
-                *//*intent.putExtra("image",Integer.toString(mList.get(position).getImage()));*//*
-                intent.putExtra("name",mList.get(position).getMember_menu());
-                intent.putExtra("gender",mList.get(position).getMember_price());
-
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("user_address",user_address);
-                intent.putExtra("user_lat",user_lat);
-                intent.putExtra("user_long",user_long);
-                intent.putExtra("user_id",user_id);
-                intent.putExtra("title",title);
-                context.startActivity(intent);
-            }
-        });*/
-
-
     }
 
     @Override
     public int getItemCount() {
         return (null != mList ? mList.size() : 0);
     }
-
-
-
-
 
 }
 

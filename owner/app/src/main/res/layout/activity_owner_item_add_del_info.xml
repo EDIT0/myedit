@@ -12,15 +12,6 @@
         android:layout_margin="5dp"
         android:padding="10dp">
 
-        <!--<ImageView
-            android:id="@+id/Human_image"
-            android:layout_width="95dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:src="#b91c1c" />-->
-
         <TextView
             android:id="@+id/item_name"
             android:layout_width="wrap_content"

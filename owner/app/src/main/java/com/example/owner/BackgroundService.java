@@ -11,12 +11,10 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.os.ResultReceiver;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -34,7 +32,6 @@ import static com.example.owner.owner_main.owner_lat1;
 import static com.example.owner.owner_main.owner_long1;
 import static com.example.owner.owner_main.owner_name1;
 import static com.example.owner.owner_main.store_name1;
-import com.example.owner.owner_main;
 
 
 public class BackgroundService extends IntentService implements BackgroundResultReceiver.Receiver {
@@ -48,36 +45,25 @@ public class BackgroundService extends IntentService implements BackgroundResult
     }
 
     @Override
-    public void onTaskRemoved(Intent rootIntent) { //핸들링 하는 부분
+    public void onTaskRemoved(Intent rootIntent) {
         Log.e("Error","onTaskRemoved - 강제 종료 " + rootIntent);
-        /*Toast.makeText(this, "onTaskRemoved ", Toast.LENGTH_SHORT).show();*/
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.deleteNotificationChannel("Noti");
-        stopSelf(); //서비스 종료
+        stopSelf();
     }
-
-
 
     public static final int STATUS_RUNNING = 0;
     public static final int STATUS_FINISHED = 1;
     public static final int STATUS_ERROR = 2;
     ResultReceiver receiver = null;
-    /*int count;*/
     boolean isRunning = true;
-
 
     public BackgroundService() {
         super("BackgroundService");
     }
 
-
-
-
-
-
     @Override
     protected void onHandleIntent(Intent workIntent) {
-        /*count = workIntent.getExtras().getInt("count");*/
         receiver = workIntent.getParcelableExtra("receiver");
 
         String command = workIntent.getStringExtra("command");
@@ -89,7 +75,6 @@ public class BackgroundService extends IntentService implements BackgroundResult
         int count=0;
 
         while(isRunning) {
-            /*count = count + 1;*/
             try {
                 Thread.sleep(6000);
             } catch (InterruptedException e) {
@@ -106,7 +91,6 @@ public class BackgroundService extends IntentService implements BackgroundResult
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             if(success){
-                                /*Toast.makeText(getApplicationContext(),"성공1",Toast.LENGTH_SHORT).show();*/
 
                                 int importance = NotificationManager.IMPORTANCE_HIGH;
                                 String Noti_Channel_ID = "Noti";
@@ -122,9 +106,7 @@ public class BackgroundService extends IntentService implements BackgroundResult
                                         .setWhen(System.currentTimeMillis()).setShowWhen(true)
                                         .setAutoCancel(true)
                                         .setSmallIcon(R.drawable.washing_machine)
-                                        /*.setPriority(NotificationCompat.PRIORITY_MAX)*/
                                         .setContentTitle("현재 '세탁이'가 동작 중 입니다.")
-                                        /*.setContentText("")*/
                                         .setOngoing(false);
 
                                 notificationManager.notify(0,builder.build());
@@ -134,9 +116,7 @@ public class BackgroundService extends IntentService implements BackgroundResult
                                 wakeLock.acquire();
 
                             }
-                            //실패한 경우
                             else{
-                                /*Toast.makeText(getApplicationContext(),"실패1",Toast.LENGTH_SHORT).show();*/
                                 return;
                             }
                         } catch (JSONException e) {
@@ -144,7 +124,6 @@ public class BackgroundService extends IntentService implements BackgroundResult
                         }
                     }
                 };
-                //서버로 Volley를 이용해서 요청을 함
                 background_db1 registerRequest = new background_db1(store_name1, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(BackgroundService.this);
                 queue.add(registerRequest);
@@ -157,12 +136,9 @@ public class BackgroundService extends IntentService implements BackgroundResult
                         JSONObject jsonObject = new JSONObject(response);
                         boolean success = jsonObject.getBoolean("success");
                         if(success){
-                            /*Toast.makeText(getApplicationContext(),"성공1",Toast.LENGTH_SHORT).show();*/
                             NotificationSomethings();
                         }
-                        //실패한 경우
                         else{
-                            /*Toast.makeText(getApplicationContext(),"실패1",Toast.LENGTH_SHORT).show();*/
                             return;
                         }
                     } catch (JSONException e) {
@@ -170,26 +146,18 @@ public class BackgroundService extends IntentService implements BackgroundResult
                     }
                 }
             };
-            //서버로 Volley를 이용해서 요청을 함
             background_db registerRequest = new background_db(store_name1, responseListener);
             RequestQueue queue = Volley.newRequestQueue(BackgroundService.this);
             queue.add(registerRequest);
-
-
-
-
         }
     }
 
     @Override
     public void onDestroy () {
-        //카운트 값 증가시키는 루프를 중단시키고
         isRunning = true;
 
-        //증가된 카운트 값을 리턴한다.
         Bundle b = new Bundle();
         try {
-            /*b.putInt( "back", count);*/
             receiver.send(STATUS_FINISHED, b);
 
         } catch(Exception e) {
@@ -205,11 +173,11 @@ public class BackgroundService extends IntentService implements BackgroundResult
 
         Intent notificationIntent = new Intent(this, owner_order_y_n.class);
 
-        notificationIntent.putExtra("owner_name", owner_name1); //전달할 값
-        notificationIntent.putExtra("owner_address", owner_address1); //전달할 값
-        notificationIntent.putExtra("owner_lat", owner_lat1); //전달할 값
-        notificationIntent.putExtra("owner_long", owner_long1); //전달할 값
-        notificationIntent.putExtra("store_name", store_name1); //전달할 값
+        notificationIntent.putExtra("owner_name", owner_name1);
+        notificationIntent.putExtra("owner_address", owner_address1);
+        notificationIntent.putExtra("owner_lat", owner_lat1);
+        notificationIntent.putExtra("owner_long", owner_long1);
+        notificationIntent.putExtra("store_name", store_name1);
 
         powerManager = (PowerManager)getSystemService(Context.POWER_SERVICE);
 

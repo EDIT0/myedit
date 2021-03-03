@@ -1,7 +1,5 @@
 package com.example.owner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +21,6 @@ public class owner_order_record2 extends Activity {
     Double owner_lat1, owner_long1;
     String u_address, memo, items;
     int t_price, yes_no;
-
     TextView tv1,tv2,tv3,tv4,tv5, tv6,tv7;
 
     @Override
@@ -59,8 +56,8 @@ public class owner_order_record2 extends Activity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                    if(success){ //회원등록에 성공한 경우
+                    boolean success = jsonObject.getBoolean("success");
+                    if(success){
                         memo = jsonObject.getString("memo");
                         t_price = jsonObject.getInt("t_price");
                         items = jsonObject.getString("items");
@@ -82,7 +79,6 @@ public class owner_order_record2 extends Activity {
                         }
 
                     }
-                    //실패한 경우
                     else{
                         Toast.makeText(getApplicationContext(),"불러오기 실패",Toast.LENGTH_SHORT).show();
                         return;
@@ -93,8 +89,6 @@ public class owner_order_record2 extends Activity {
 
             }
         };
-
-        //서버로 Volley를 이용해서 요청을 함
         owner_order_record2_db registerRequest = new owner_order_record2_db(store_name1,user_id1, date, responseListener);
         RequestQueue queue = Volley.newRequestQueue(owner_order_record2.this);
         queue.add(registerRequest);

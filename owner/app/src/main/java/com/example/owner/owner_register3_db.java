@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class owner_register3_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/owner_register_add.php";
     private Map<String, String> map;
 
@@ -25,8 +24,6 @@ public class owner_register3_db extends StringRequest {
         map.put("owner_address",owner_address);
         map.put("owner_lat",owner_lat+"");
         map.put("owner_long",owner_long+"");
-
-
     }
 
     @Override

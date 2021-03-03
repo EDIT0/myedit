@@ -2,7 +2,6 @@ package com.example.owner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -62,8 +61,8 @@ public class owner_review_management_reply extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 Intent intent = new Intent(owner_review_management_reply.this, owner_review_management.class);
                                 intent.putExtra("owner_name",owner_name1);
                                 intent.putExtra("owner_address",owner_address1);
@@ -73,7 +72,6 @@ public class owner_review_management_reply extends AppCompatActivity {
                                 setResult(RESULT_OK,intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"실행 ERROR",Toast.LENGTH_SHORT).show();
                                 return;
@@ -84,8 +82,6 @@ public class owner_review_management_reply extends AppCompatActivity {
 
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 owner_review_management_reply_db registerRequest = new owner_review_management_reply_db(store_name1,
                         now_user_id1, date, content, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_review_management_reply.this);
@@ -97,7 +93,7 @@ public class owner_review_management_reply extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case android.R.id.home:{ // 왼쪽 상단 버튼 눌렀을 때
+            case android.R.id.home:{
                 Intent intent = new Intent(owner_review_management_reply.this, owner_review_management.class);
                 intent.putExtra("owner_name",owner_name1);
                 intent.putExtra("owner_address",owner_address1);
@@ -112,6 +108,5 @@ public class owner_review_management_reply extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

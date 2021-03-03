@@ -22,9 +22,8 @@ import java.util.Random;
 
 public class owner_forgot_id_pw extends Activity {
 
-    Button signup_back, checkemail,b1,b2,b3,b4;
+    Button signup_back, b1,b2,b3;
     EditText et1,et2,et3,et4;
-
     String owner_email, snum;
     int num;
     String s_n;
@@ -59,15 +58,11 @@ public class owner_forgot_id_pw extends Activity {
                         try {
                             Toast.makeText(getApplicationContext(),"이메일을 확인해주세요.",Toast.LENGTH_SHORT).show();
                             JSONObject jsonObject = new JSONObject(response);
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 owner_signup2_email_db registerRequest = new owner_signup2_email_db(owner_email,snum, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_forgot_id_pw.this);
                 queue.add(registerRequest);
@@ -92,7 +87,7 @@ public class owner_forgot_id_pw extends Activity {
                             startActivity(intent);
                         }
                     });
-                    AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                    AlertDialog alert = builder.create();
                     alert.show();
                 }
                 else{
@@ -104,7 +99,7 @@ public class owner_forgot_id_pw extends Activity {
 
                         }
                     });
-                    AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                    AlertDialog alert = builder.create();
                     alert.show();
                 }
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -113,8 +108,6 @@ public class owner_forgot_id_pw extends Activity {
 
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 owner_forgot_id_db registerRequest = new owner_forgot_id_db(owner_email,s_n, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_forgot_id_pw.this);
                 queue.add(registerRequest);
@@ -127,7 +120,6 @@ public class owner_forgot_id_pw extends Activity {
                 try {
                     owner_id1 = et3.getText().toString();
                     owner_email1 = et4.getText().toString();
-                    /*int cd = Integer.parseInt("0");*/
 
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "번호를 공백없이 입력해주세요.", Toast.LENGTH_SHORT).show();
@@ -141,7 +133,7 @@ public class owner_forgot_id_pw extends Activity {
 
                         }
                     });
-                    AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                    AlertDialog alert = builder.create();
                     alert.show();
                 } else {
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -149,7 +141,7 @@ public class owner_forgot_id_pw extends Activity {
                         public void onResponse(String response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
-                                boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
+                                boolean success = jsonObject.getBoolean("success");
                                 if (success) {
                                     Intent intent = new Intent(owner_forgot_id_pw.this, owner_forgot_pw_change.class);
                                     intent.putExtra("owner_email", owner_email1);
@@ -166,7 +158,7 @@ public class owner_forgot_id_pw extends Activity {
 
                                         }
                                     });
-                                    AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                                    AlertDialog alert = builder.create();
                                     alert.show();
                                     return;
                                 }
@@ -176,20 +168,12 @@ public class owner_forgot_id_pw extends Activity {
 
                         }
                     };
-
-                    //서버로 Volley를 이용해서 요청을 함
                     owner_forgot_pw_db registerRequest = new owner_forgot_pw_db(owner_email1, owner_id1, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(owner_forgot_id_pw.this);
                     queue.add(registerRequest);
                 }
             }
         });
-
-
-
-
-
-
 
         signup_back = (Button) findViewById(R.id.layout2_b1);
         signup_back.setOnClickListener(new View.OnClickListener() {

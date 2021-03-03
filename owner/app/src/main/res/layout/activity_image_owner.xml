@@ -7,52 +7,6 @@
     tools:context=".ImageActivity_owner"
     android:weightSum="10">
 
-
-
-    <!--<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="20dp"
-            android:background="#FF000000" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5">
-            <Button
-                android:id="@+id/layout2_b1"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="left"
-                android:layout_margin="10dp"
-                android:background="@drawable/arrow_back">
-
-            </Button>
-
-            <TextView
-                android:id="@+id/u_id"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text=""
-                android:textSize="25dp"
-                android:textStyle="bold"></TextView>
-        </FrameLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#FF000000" />
-    </LinearLayout>-->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -320,41 +274,7 @@
 
         </LinearLayout>
 
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="직접배달여부: "
-            android:textSize="17dp"/>
-
-        <TextView
-            android:id="@+id/yes_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="17dp"/>
-
-        <Button
-            android:id="@+id/change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textSize="15dp"
-            android:text="변경"/>-->
-
-
 
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>

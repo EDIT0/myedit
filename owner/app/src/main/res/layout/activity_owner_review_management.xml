@@ -124,6 +124,4 @@
         app:menu="@menu/menu2"/>
     />
 
-
-
 </androidx.drawerlayout.widget.DrawerLayout>

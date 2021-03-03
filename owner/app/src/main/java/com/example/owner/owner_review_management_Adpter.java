@@ -42,7 +42,6 @@ public class owner_review_management_Adpter extends RecyclerView.Adapter<owner_r
 
     private ArrayList<owner_review_management_list> mList = null;
     private Activity context = null;
-    /*String var_name = ((user_main1)user_main1.context).var_name;*/
 
     String owner_name;
     String owner_address;
@@ -87,14 +86,9 @@ public class owner_review_management_Adpter extends RecyclerView.Adapter<owner_r
             this.temp = (TextView) view.findViewById(R.id.temp);
             this.start = (TextView) view.findViewById(R.id.start);
             this.iv1 = view.findViewById(R.id.image1);
-            /*this.iv2 = (ImageView) view.findViewById(R.id.image2);
-            this.iv3 = (ImageView) view.findViewById(R.id.image3);*/
 
         }
-
-
     }
-
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -114,13 +108,12 @@ public class owner_review_management_Adpter extends RecyclerView.Adapter<owner_r
         viewholder.content.setText(mList.get(position).getMember_content());
         viewholder.items.setText(mList.get(position).getMember_items());
 
-        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage"); // 저장 경로
+        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/saveimage");
         if (!saveFile.exists()) {
             saveFile.mkdir();
         } else {
             Log.d(TAG, "이미 만들어졌음");
         }
-
 
         String path = mList.get(position).getMember_image1();
         if(path.equals("a")){
@@ -200,27 +193,6 @@ public class owner_review_management_Adpter extends RecyclerView.Adapter<owner_r
             }
         });
 
-
-
-        /*viewholder.b1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(), user_order_record2.class);
-                intent.putExtra("user_name",user_name);
-                intent.putExtra("user_address",user_address);
-                intent.putExtra("user_lat",user_lat);
-                intent.putExtra("user_long",user_long);
-                intent.putExtra("user_id",user_id);
-                intent.putExtra("user_address_detail",user_address_detail);
-                intent.putExtra("store_name",s_name);
-                intent.putExtra("date",date);
-
-                context.startActivity(intent);
-            }
-        });*/
-
-
         viewholder.privatereview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -236,8 +208,6 @@ public class owner_review_management_Adpter extends RecyclerView.Adapter<owner_r
                 context.startActivityForResult(intent,0);
             }
         });
-
-
     }
 
     @Override

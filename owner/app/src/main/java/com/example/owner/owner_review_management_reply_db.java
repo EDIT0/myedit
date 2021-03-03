@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class owner_review_management_reply_db extends StringRequest {
-    //서버 URL 설정
     final static private String URL = "http://edit0.dothome.co.kr/owner_review_management_reply_db.php";
     private Map<String, String> map;
 
@@ -21,8 +20,6 @@ public class owner_review_management_reply_db extends StringRequest {
         map.put("now_user_id",now_user_id);
         map.put("date",date+"");
         map.put("content",content);
-
-
     }
 
     @Override

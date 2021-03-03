@@ -57,7 +57,7 @@ public class owner_forgot_pw_change extends Activity {
                         public void onResponse(String response) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
-                                boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
+                                boolean success = jsonObject.getBoolean("success");
                                 if (success) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(owner_forgot_pw_change.this);
                                     builder.setTitle("알림");
@@ -69,7 +69,7 @@ public class owner_forgot_pw_change extends Activity {
                                             startActivity(intent);
                                         }
                                     });
-                                    AlertDialog alert = builder.create();                                                       //빌더를 이용하여 AlertDialog객체를 생성합니다.
+                                    AlertDialog alert = builder.create();
                                     alert.show();
                                     return;
                                 }
@@ -82,8 +82,6 @@ public class owner_forgot_pw_change extends Activity {
 
                         }
                     };
-
-                    //서버로 Volley를 이용해서 요청을 함
                     owner_forgot_pw_change_db registerRequest = new owner_forgot_pw_change_db(owner_email1, owner_id1,o_pw, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(owner_forgot_pw_change.this);
                     queue.add(registerRequest);
@@ -93,7 +91,6 @@ public class owner_forgot_pw_change extends Activity {
     }
 
     public String change_hash(String text){
-        // SHA-256 MessageDigest의 생성
         MessageDigest mdSHA256 = null;
         try {
             mdSHA256 = MessageDigest.getInstance("SHA-256");
@@ -101,17 +98,14 @@ public class owner_forgot_pw_change extends Activity {
             e.printStackTrace();
         }
 
-        // " Java 마스터! " 문자열 바이트로 메시지 다이제스트를 갱신
         try {
             mdSHA256.update(text.getBytes("UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        // 해시 계산 반환값은 바이트 배열
         byte[] sha256Hash = mdSHA256.digest();
 
-        // 바이트배열을 16진수 문자열로 변환하여 표시
         StringBuilder hexSHA256hash = new StringBuilder();
         for(byte b : sha256Hash) {
             String hexString = String.format("%02x", b);

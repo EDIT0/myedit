@@ -2,11 +2,9 @@ package com.example.owner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -22,10 +20,8 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.NaverMap;
@@ -86,11 +82,9 @@ public class owner_signup3 extends FragmentActivity
             }
         });
 
-        //가게이름, 사장님이름, 사장님번호, 가게주소, 위도, 경도, owner_id 값을 signup4로 넘기기
         user_signup_go = (Button) findViewById(R.id.layout3_b2);
         user_signup_go.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //현재 입력되어 있는 값을 가져온다(get)
                 Double owner_lat = latitude;
                 Double owner_long = longitude;
                 String m = a.get(0).getAddressLine(0).replaceAll("대한민국","");
@@ -102,8 +96,8 @@ public class owner_signup3 extends FragmentActivity
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 String owner_store_name = owner_store_name1;
                                 String owner_name = owner_name1;
                                 String owner_id = owner_id1;
@@ -126,7 +120,6 @@ public class owner_signup3 extends FragmentActivity
 
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"회원가입 실패",Toast.LENGTH_SHORT).show();
                                 return;
@@ -137,8 +130,6 @@ public class owner_signup3 extends FragmentActivity
 
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 owner_register2_db registerRequest = new owner_register2_db(owner_lat, owner_long, owner_address, owner_nin, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_signup3.this);
                 queue.add(registerRequest);
@@ -154,10 +145,6 @@ public class owner_signup3 extends FragmentActivity
                 startActivity(intent2);*/
         });
 
-        /*fragmentManager = getFragmentManager();
-        mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.googlemap);
-        mapFragment.getMapAsync(this);*/
-
         locationSource =
                 new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
@@ -170,58 +157,6 @@ public class owner_signup3 extends FragmentActivity
 
         mapFragment.getMapAsync(this);
     }
-
-    /*@Override
-    public void onMapReady(final GoogleMap googleMap) {
-        *//*마커*//*
-        LatLng location = new LatLng(36.620784, 127.287240);
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.title("홍익대학교 세종캠퍼스");
-        markerOptions.snippet("교육기관");
-        markerOptions.position(location);
-        googleMap.addMarker(markerOptions);
-
-        *//*googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));*//*
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location,16));
-
-
-        final Geocoder g = new Geocoder(this);
-        mMap = googleMap;
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
-            @Override
-            public void onMapClick(LatLng point) {
-                MarkerOptions mOptions = new MarkerOptions();
-                // 마커 타이틀
-                mOptions.title("이곳으로 설정하기!");
-                latitude = point.latitude; // 위도
-                longitude = point.longitude; // 경도
-                // 마커의 스니펫(간단한 텍스트) 설정
-                *//*mOptions.snippet(latitude.toString() + ", " + longitude.toString());*//*
-                // LatLng: 위도 경도 쌍을 나타냄
-                mOptions.position(new LatLng(latitude, longitude));
-
-                googleMap.clear();
-
-                // 마커(핀) 추가
-                googleMap.addMarker(mOptions);
-
-                try {
-                    a = g.getFromLocation(latitude,longitude,1);
-                    Toast.makeText(getApplicationContext(), ""+a.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
-                    set_address = a.get(0).getAddressLine(0);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
-                *//*Double temp1 = latitude;
-                Double temp2 = longitude;
-                if (latitude == temp1 || longitude == temp2){
-                    googleMap.remove
-                }*//*
-            }
-        });
-    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -262,15 +197,12 @@ public class owner_signup3 extends FragmentActivity
         naverMap.setOnMapClickListener(new NaverMap.OnMapClickListener(){
             @Override
             public void onMapClick(@NonNull PointF pointF, @NonNull com.naver.maps.geometry.LatLng latLng) {
-                /*Toast.makeText(getApplicationContext(), latLng.latitude + ", " + latLng.longitude+"", Toast.LENGTH_SHORT).show();*/
                 marker.setPosition(new LatLng( latLng.latitude,latLng.longitude));
                 marker.setMap(naverMap);
                 latitude=latLng.latitude;
                 longitude=latLng.longitude;
 
                 infoWindow.open(marker);
-
-                /*naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);*/
 
                 try {
                     a = g.getFromLocation(latitude,longitude,1);
@@ -283,26 +215,17 @@ public class owner_signup3 extends FragmentActivity
             }
         });
 
-
-        /*LatLng coord = new LatLng(37.5670135, 126.9783740);
-
-        Toast.makeText(getApplication(),
-                "위도: " + coord.latitude + ", 경도: " + coord.longitude,
-                Toast.LENGTH_SHORT).show();*/
     }
 
 
     public void checkPermission(){
-        //현재 안드로이드 버전이 6.0미만이면 메서드를 종료한다.
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return;
 
         for(String permission : permission_list){
-            //권한 허용 여부를 확인한다.
             int chk = checkCallingOrSelfPermission(permission);
 
             if(chk == PackageManager.PERMISSION_DENIED){
-                //권한 허용을여부를 확인하는 창을 띄운다
                 requestPermissions(permission_list,0);
             }
         }

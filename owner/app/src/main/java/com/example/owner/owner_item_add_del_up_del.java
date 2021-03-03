@@ -1,7 +1,5 @@
 package com.example.owner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,10 +64,8 @@ public class owner_item_add_del_up_del extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
-                                /*String user_id = et2.getText().toString();*/
-                                /*Toast.makeText(getApplicationContext(),"다음으로",Toast.LENGTH_SHORT).show();*/
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
 
                                 Intent intent = new Intent(owner_item_add_del_up_del.this, owner_item_add_del.class);
                                 intent.putExtra("owner_name",owner_name1);
@@ -81,7 +77,6 @@ public class owner_item_add_del_up_del extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"중복된 아이디입니다.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -92,8 +87,6 @@ public class owner_item_add_del_up_del extends Activity {
 
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 owner_item_update_db registerRequest = new owner_item_update_db(item_name, item_price,laundry_list_s_name,before_menu, before_price, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_item_add_del_up_del.this);
                 queue.add(registerRequest);
@@ -116,10 +109,8 @@ public class owner_item_add_del_up_del extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
-                                /*String user_id = et2.getText().toString();*/
-                                /*Toast.makeText(getApplicationContext(),"다음으로",Toast.LENGTH_SHORT).show();*/
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
 
                                 Intent intent = new Intent(owner_item_add_del_up_del.this, owner_item_add_del.class);
                                 intent.putExtra("owner_name",owner_name1);
@@ -131,7 +122,6 @@ public class owner_item_add_del_up_del extends Activity {
                                 startActivity(intent);
                                 finish();
                             }
-                            //실패한 경우
                             else{
                                 Toast.makeText(getApplicationContext(),"중복된 아이디입니다.",Toast.LENGTH_SHORT).show();
                                 return;
@@ -142,8 +132,6 @@ public class owner_item_add_del_up_del extends Activity {
 
                     }
                 };
-
-                //서버로 Volley를 이용해서 요청을 함
                 owner_item_delete_db registerRequest = new owner_item_delete_db(item_name, item_price,laundry_list_s_name, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_item_add_del_up_del.this);
                 queue.add(registerRequest);

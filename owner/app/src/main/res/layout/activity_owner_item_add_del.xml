@@ -81,17 +81,6 @@
                 android:textColor="@color/blue"
                 android:textSize="15dp" />
 
-            <!--<androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="저장"
-                android:textSize="15dp"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/buttonshape2"
-                android:textColor="@color/white"
-                android:fontFamily="@font/regular"
-                />-->
         </LinearLayout>
     </LinearLayout>
 

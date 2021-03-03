@@ -1,14 +1,10 @@
 package com.example.owner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,7 +40,6 @@ public class owner_signup4 extends Activity {
         go_to_main = (Button) findViewById(R.id.layout4_b2);
         go_to_main.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //현재 입력되어 있는 값을 가져온다(get)
                 String owner_store_name = owner_store_name1;
                 String owner_name = owner_name1;
                 String owner_id = owner_id1;
@@ -59,16 +54,14 @@ public class owner_signup4 extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 /*Toast.makeText(getApplicationContext(),"회원등록 완료",Toast.LENGTH_SHORT).show();*/
                                 Intent intent = new Intent(owner_signup4.this, MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
-                                /*Toast.makeText(getApplicationContext(),"회원등록 실패",Toast.LENGTH_SHORT).show();*/
                                 return;
                             }
                         } catch (JSONException e) {
@@ -77,7 +70,6 @@ public class owner_signup4 extends Activity {
 
                     }
                 };
-                //서버로 Volley를 이용해서 요청을 함
                 owner_register3_db registerRequest = new owner_register3_db(owner_store_name, owner_name, owner_id, owner_number, owner_lat, owner_long,
                         owner_address, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_signup4.this);
@@ -85,13 +77,9 @@ public class owner_signup4 extends Activity {
             }
         });
 
-
-
-        //가게이름, 사장님이름, 사장님번호, 가게주소, 위도, 경도, owner_id
         go_to_login = (Button) findViewById(R.id.layout4_b1);
         go_to_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //현재 입력되어 있는 값을 가져온다(get)
                 String owner_store_name = owner_store_name1;
                 String owner_name = owner_name1;
                 String owner_id = owner_id1;
@@ -106,16 +94,13 @@ public class owner_signup4 extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success"); //php보면 response가 success면 ㄱㄱ
-                            if(success){ //회원등록에 성공한 경우
-                                /*Toast.makeText(getApplicationContext(),"회원등록 완료",Toast.LENGTH_SHORT).show();*/
+                            boolean success = jsonObject.getBoolean("success");
+                            if(success){
                                 Intent intent = new Intent(owner_signup4.this, owner_login.class);
 
                                 startActivity(intent);
                             }
-                            //실패한 경우
                             else{
-                                /*Toast.makeText(getApplicationContext(),"회원등록 실패",Toast.LENGTH_SHORT).show();*/
                                 return;
                             }
                         } catch (JSONException e) {
@@ -124,7 +109,6 @@ public class owner_signup4 extends Activity {
 
                     }
                 };
-                //서버로 Volley를 이용해서 요청을 함
                 owner_register3_db registerRequest = new owner_register3_db(owner_store_name, owner_name, owner_id, owner_number, owner_lat, owner_long,
                         owner_address, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(owner_signup4.this);
