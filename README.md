@@ -45,4 +45,14 @@ PHP문을 통해 웹에 JSON 형식으로 데이터를 뿌려주어 앱에서 �
 
 ✔ 관련 이미지
 
-![image](https://user-images.githubusercontent.com/61875571/109827494-1f22d780-7c7f-11eb-8bb1-95b8e502580d.png)
+🚩 로그인 & 주문
+![image](https://user-images.githubusercontent.com/61875571/109828252-d0297200-7c7f-11eb-84c0-8d04416e0a74.png)
+
+🚩 주문 받기 & 세탁물 수거 과정
+![image](https://user-images.githubusercontent.com/61875571/109828331-e0d9e800-7c7f-11eb-8222-d39608a90a7e.png)
+
+🚩 세탁 완료 후 배달
+![image](https://user-images.githubusercontent.com/61875571/109828669-32827280-7c80-11eb-891d-c85b9d61cb98.png)
+
+🚩 주문 최종 완료
+![image](https://user-images.githubusercontent.com/61875571/109828772-48903300-7c80-11eb-9c6a-69fe88e61a25.png)
