@@ -15,7 +15,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,8 +43,7 @@ public class owner_review_management extends AppCompatActivity{
     double avg;
 
     private long backBtnTime = 0;
-    Button b1,b2,b3,b4,b5,b6,b7,b8;
-    TextView tv1,tv2,tv3,tv4,tv5;
+    TextView tv1,tv2;
     RatingBar rb1;
 
     private static String TAG = "TAG";
