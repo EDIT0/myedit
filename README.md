@@ -53,14 +53,33 @@ PHP문을 통해 웹에 JSON 형식으로 데이터를 뿌려주어 앱에서 �
 
 ![image](https://user-images.githubusercontent.com/61875571/109828252-d0297200-7c7f-11eb-84c0-8d04416e0a74.png)
 
+
 🚩 주문 받기 & 세탁물 수거 과정
 
 ![image](https://user-images.githubusercontent.com/61875571/109828331-e0d9e800-7c7f-11eb-8222-d39608a90a7e.png)
+
 
 🚩 세탁 완료 후 배달
 
 ![image](https://user-images.githubusercontent.com/61875571/109828669-32827280-7c80-11eb-891d-c85b9d61cb98.png)
 
+
 🚩 주문 최종 완료
 
 ![image](https://user-images.githubusercontent.com/61875571/109828772-48903300-7c80-11eb-9c6a-69fe88e61a25.png)
+
+
+🚩 주문 기록
+
+![image](https://user-images.githubusercontent.com/61875571/109829088-91e08280-7c80-11eb-9835-e46a467ad517.png)
+
+
+🚩 리뷰 작성 및 답글 
+
+![image](https://user-images.githubusercontent.com/61875571/109829244-afade780-7c80-11eb-97a6-808866e4a331.png)
+
+
+🚩 해시 태그
+
+![image](https://user-images.githubusercontent.com/61875571/109829297-b9374f80-7c80-11eb-8ae2-cd2340dacde0.png)
+
