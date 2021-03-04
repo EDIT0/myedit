@@ -27,5 +27,11 @@
 
 ✔ 관련 이미지
 
-![image](https://user-images.githubusercontent.com/61875571/109920404-99923c80-7cfd-11eb-9b9e-fbebd3a961ee.png)
+🚩 **첫 화면**
 
+![image](https://user-images.githubusercontent.com/61875571/109920523-bfb7dc80-7cfd-11eb-8205-06a12edbac09.png)
+
+
+🚩 **카테고리 별 영화 순위**
+
+![image](https://user-images.githubusercontent.com/61875571/109920745-16251b00-7cfe-11eb-96ce-92492e64167a.png)
