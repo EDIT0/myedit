@@ -27,4 +27,5 @@
 
 ✔ 관련 이미지
 
-![image](https://user-images.githubusercontent.com/61875571/109920074-196bd700-7cfd-11eb-9544-bbdca2bbc930.png)
+![image](https://user-images.githubusercontent.com/61875571/109920404-99923c80-7cfd-11eb-9b9e-fbebd3a961ee.png)
+
