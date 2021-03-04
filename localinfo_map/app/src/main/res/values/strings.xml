@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">localinfo_map</string>
+    <string name="release_app_name">동네탐방</string>
+
+    <string name="facility_title"> • 시설 개수 (범위 내)</string>
+    <string name="facility_criteria">1.편의점 / 2.병원 / 3.약국 / 4.도서관 / 5.세탁소 / 6.공원 / 7.영화관 / 8.카페 / 9.주차장 / 10.주유소 11.은행 / 12.대형마트</string>
+    <string name="environ_title"> • 생활환경 만족도</string>
+    <string name="environ_criteria">10점 만점 기준 (구 기준)</string>
+    <string name="household_housing_title"> • 세대원수 및 주택종류 비율 (%, 동)</string>
+    <string name="age_title"> • 연령별 인구 비율 (%, 동)</string>
+    <string name="crime_title"> • 범죄율</string>
+    <string name="crime_criteria">1천명당 5대 범죄 발생 횟수 (1년, 구 기준)</string>
+    <string name="traffic_title"> • 교통안전지수</string>
+    <string name="traffic_criteria">100점 만점 (구 기준)</string>
+    <string name="CCTV_title"> • 단위 면적당 CCTV 설치 수량</string>
+    <string name="CCTV_criteria">방범용 및 어린이 보호 CCTV만 포함 (단위 면적 1km², 구 기준)</string>
+    <string name="statistic_reference">본 데이터는 카카오 지도/로컬 API 를 사용하고, 서울열린데이터광장 자료를 참고합니다.\n
+ ∙ 서울시 생활환경 만족도 통계(2019)\n
+ ∙ 서울시 세대원수별 세대수 (동별) 통계(2020 3/4분기)\n
+ ∙ 서울시 주택종류별 주택 (동별) 통계(2015)\n
+ ∙ 서울시 5대 범죄 발생현황 통계(2019)\n
+ ∙ 서울시 교통안전지수 통계(2019)\n
+ ∙ 서울시 자치구 목적별 CCTV 설치 수량(2020)\n
+ ∙ 서울시 주민등록인구(연령별/동별)통계(2020 3/4분기)</string>
+
+    <string name="user_guide_reference_1">1. 생활편의시설 위치 검색</string>
+    <string name="user_guide_reference_2">설정하신 범위 내에 있는 시설 중 범위(원)의 중심으로부터 거리순으로 최대 45개까지 표시됩니다.</string>
+    <string name="user_guide_reference_3">
+        (예시) 범위를 300m, 카테고리를 편의점으로 설정한 경우 범위 내에 편의점이 60개 검색되더라도 범위(원)의 중심에서 가까운 45개까지 지도에 표시됩니다.</string>
+    <string name="user_guide_reference_4">더 보기 원하시면 지도에서 검색 위치를 옮겨 확인하시기 바랍니다.</string>
+
+    <string name="user_guide_reference_5">2. 지역정보 제공 관련</string>
+    <string name="user_guide_reference_6">현재 서울특별시에 한하여 통계데이터를 제공하고 있습니다.\n다른 지역 정보도 제공할 수 있도록 노력하겠습니다.</string>
+
+</resources>

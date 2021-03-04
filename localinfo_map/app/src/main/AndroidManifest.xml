@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.localinfo.je">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/localinfo_map"
+        android:label="@string/release_app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/localinfo_map_round"
+        android:supportsRtl="true"
+        android:theme="@style/custom_style"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".User_guide"></activity>
+        <activity android:name=".Marker_detail" />
+        <activity android:name=".Loading_logo" />
+        <activity android:name=".Range_change" />
+        <activity android:name=".notice_content" />
+        <!--
+<activity android:name=".Recycler_Adapter" />
+        <activity android:name=".setting" />
+        <activity android:name=".notice" />
+        <activity android:name=".map" />
+        <activity android:name=".statistic" />
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"> <!-- 세로 고정 -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="f64ae3a72082c92e85dc6a84c28c7f01" />
+    </application>
+
+</manifest>

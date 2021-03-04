@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".statistic"
+    android:orientation="vertical"
+    android:background="#f4f5f9"> <!--#CED0D6-->
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:background="#f4f5f9"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/location"
+            android:textSize="22dp"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/nanumbarungothiclight"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:background="#f4f5f9"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/facility_title"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:fontFamily="@font/nanumbarungothiclight"/>
+
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/chart"
+                android:fontFamily="@font/nanumbarungothicultralight"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/facility_criteria"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/analysis_layout">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="#f4f5f9"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/environ_title"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:paddingTop="5dp"
+                    android:fontFamily="@font/nanumbarungothiclight"
+                    android:id="@+id/tv1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/environ"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/environ_criteria"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="#f4f5f9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/household_housing_title"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:layout_margin="5dp"
+                        android:paddingTop="10dp"
+                        android:fontFamily="@font/nanumbarungothiclight"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="10dp">
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:layout_width="0dp"
+                            android:layout_height="200dp"
+                            android:layout_weight="1"
+                            android:id="@+id/household"
+                            android:fontFamily="@font/nanumbarungothicultralight">
+
+                        </com.github.mikephil.charting.charts.PieChart>
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:layout_width="0dp"
+                            android:layout_height="200dp"
+                            android:layout_weight="1"
+                            android:id="@+id/housing"
+                            android:fontFamily="@font/nanumbarungothicultralight">
+
+                        </com.github.mikephil.charting.charts.PieChart>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="#f4f5f9"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age_title"
+                    android:paddingBottom="10dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:paddingTop="10dp"
+                    android:fontFamily="@font/nanumbarungothiclight"/>
+
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/chart_age"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="#f4f5f9"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/crime_title"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:paddingTop="5dp"
+                    android:fontFamily="@font/nanumbarungothiclight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/crime"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/crime_criteria"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="#f4f5f9"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/traffic_title"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:paddingTop="5dp"
+                    android:fontFamily="@font/nanumbarungothiclight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/traffic"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/traffic_criteria"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="#f4f5f9"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CCTV_title"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"
+                    android:paddingTop="5dp"
+                    android:fontFamily="@font/nanumbarungothiclight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cctv"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp"
+                    android:textStyle="bold"
+                    android:text="@string/CCTV_criteria"
+                    android:fontFamily="@font/nanumbarungothicultralight"/>
+
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_centerInParent="true"
+                android:background="#f4f5f9"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/statistic_reference"
+                android:textStyle="bold"
+                android:textSize="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="#f4f5f9"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true"
+                android:background="#f4f5f9"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

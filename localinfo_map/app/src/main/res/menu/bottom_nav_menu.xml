@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/statistic_tab"
+        app:showAsAction="always"
+        android:icon="@drawable/statistic"
+        android:enabled="true"
+        android:title="통계" />
+
+    <item android:id="@+id/map_tab"
+        app:showAsAction="always"
+        android:icon="@drawable/map"
+        android:enabled="true"
+        android:title="지도"/>
+
+    <item
+        android:id="@+id/notice"
+        app:showAsAction="always"
+        android:icon="@drawable/notice"
+        android:enabled="true"
+        android:title="공지사항" />
+
+    <item
+        android:id="@+id/setting"
+        app:showAsAction="always"
+        android:icon="@drawable/setting"
+        android:enabled="true"
+        android:title="더보기"/>
+
+</menu>
