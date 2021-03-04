@@ -27,11 +27,22 @@
 
 ✔ 관련 이미지
 
-🚩 **첫 화면**
+🚩 **첫 화면, 카테고리 별 영화 순위**
 
-![image](https://user-images.githubusercontent.com/61875571/109920523-bfb7dc80-7cfd-11eb-8205-06a12edbac09.png)
+![image](https://user-images.githubusercontent.com/61875571/109920859-47055000-7cfe-11eb-8546-82ebdb378089.png)
 
 
-🚩 **카테고리 별 영화 순위**
+🚩 **간단한 정보, 상세보기 누를 시 페이지 이동**
 
-![image](https://user-images.githubusercontent.com/61875571/109920745-16251b00-7cfe-11eb-96ce-92492e64167a.png)
+![image](https://user-images.githubusercontent.com/61875571/109920933-57b5c600-7cfe-11eb-9f02-e7880d558aad.png)
+
+
+🚩 **담기 기능**
+
+![image](https://user-images.githubusercontent.com/61875571/109921042-859b0a80-7cfe-11eb-9ded-7ae4802b090a.png)
+
+
+🚩 **저장소, 담기 삭제**
+
+![image](https://user-images.githubusercontent.com/61875571/109921126-b54a1280-7cfe-11eb-89d4-4359d18eebcf.png)
+
