@@ -1,6 +1,8 @@
 
 ## **영화 관련 총 2가지 간단한 프로젝트로 구성**
 
+1.
+
 ✔ **제목: Film Finder (영화 검색 기능 제공 앱)** (폴더명: k_bindingAdapter_RecyclerView3) (Kotlin)
 
 검색창으로부터 영화 검색이 가능하며, 영화 선택 시 포스터, 평점, 출시일, 줄거리 등을 제공해줍니다.
@@ -35,7 +37,7 @@ AAC에서 제공하는 여러 라이브러리가 최근 개발에 트렌드라�
 
 ✔ **관련 이미지**
 
-🚩 **로딩 화면 및 검색 화면
+🚩 **로딩 화면 및 검색 화면**
 
 ![image](https://user-images.githubusercontent.com/61875571/112421786-16e82480-8d73-11eb-90ac-26fd113c212d.png)
 
@@ -49,6 +51,8 @@ AAC에서 제공하는 여러 라이브러리가 최근 개발에 트렌드라�
 
 ![image](https://user-images.githubusercontent.com/61875571/112421977-7b0ae880-8d73-11eb-9c1f-f744d8025a86.png)
 
+
+2. 
 
 ✔ **제목: 영화 정보 및 순위 제공 앱 (영순이(위))** (폴더명: project1_searchmovie) (Java)
 
