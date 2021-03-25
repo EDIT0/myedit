@@ -17,9 +17,10 @@ The Movie DB (https://developers.themoviedb.org/3/getting-started/introduction)
 
 ✔ **기술**
 
-📌 ViewModel, DataBinding 적용
+📌 ViewModel, DataBinding, BindingAdapter
 
 XML에 데이터를 지정해주어서 직접 데이터 값을 적용해주지 않아도 ViewModel을 통해 데이터를 전달해줍니다.
+BindingAdapter를 통해 원하는 기능의 메소드를 만들어 적용해줄 수 있습니다.
 
 📌 Retrofit
 
