@@ -1,13 +1,56 @@
-✔ **제목: Film Finder (영화 검색 기능 제공 앱)** (폴더명: k_bindingAdapter_RecyclerView3)
+
+## **영화 관련 총 2가지 간단한 프로젝트로 구성**
+
+✔ **제목: Film Finder (영화 검색 기능 제공 앱)** (폴더명: k_bindingAdapter_RecyclerView3) (Kotlin)
+
+검색창으로부터 영화 검색이 가능하며, 영화 선택 시 포스터, 평점, 출시일, 줄거리 등을 제공해줍니다.
+
+✔ **프로젝트를 진행한 계기**
+
+1. ViewModel, DataBinding 공부를 하며 RecyclerView에 DataBinding을 적용해 보고자 하여 간단하게 만들어 본 프로젝트
+
+✔ **오픈 API 제공**
+
+The Movie DB (https://developers.themoviedb.org/3/getting-started/introduction)
+
+✔ **기술**
+
+📌 ViewModel, DataBinding 적용
+
+XML에 데이터를 지정해주어서 직접 데이터 값을 적용해주지 않아도 ViewModel을 통해 데이터를 전달해줍니다.
+
+📌 Retrofit
+
+TMDB에서 제공해주는 오픈 API에서 데이터를 가져오기 위한 통신을 담당합니다.
+
+📌 RecyclerView
+
+✔ **느낀점**
+
+AAC에서 제공하는 여러 라이브러리가 최근 개발에 트렌드라는 점을 꺠닮게 되었다.
+코드를 항상 findViewById 를 통해 데이터를 직접 지정해주고 하였는데, 바인딩을 사용한 방법이 클래스 숫자는 많아지지만 무언가 체계적이고 각자의 역할을 볼 수 있었던 것 같다.
+신기했다.
+아직 내가 모르는 것이 너무 많다. 
+많이 부족하지만, 찾아보고 계속 이해해보려고 노력해야겠다.
+
+✔ **관련 이미지**
+
+🚩 **로딩 화면 및 검색 화면
+
+![image](https://user-images.githubusercontent.com/61875571/112421786-16e82480-8d73-11eb-90ac-26fd113c212d.png)
 
 
+🚩 **영화 검색 시**
+
+![image](https://user-images.githubusercontent.com/61875571/112421865-4139e200-8d73-11eb-8b44-a91c287f3edd.png)
 
 
+🚩 **영화 아이템 클릭 시 영화 정보**
+
+![image](https://user-images.githubusercontent.com/61875571/112421977-7b0ae880-8d73-11eb-9c1f-f744d8025a86.png)
 
 
-
-
-✔ **제목: 영화 정보 및 순위 제공 앱 (영순이(위))** (폴더명: project1_searchmovie)
+✔ **제목: 영화 정보 및 순위 제공 앱 (영순이(위))** (폴더명: project1_searchmovie) (Java)
 
 카테고리 별 Rank 1 ~ 10 까지 영화들을 나열하여 보여주며, 영화에 대한 간단한 정보를 보여줍니다.
 
@@ -26,12 +69,14 @@
 
 📌 Volley
 
-통신 라이브러리로 영화진흥위원회에서 제공하는 오픈 API 데이터들을 가지고 와서 보여줍니다.
+영화진흥위원회에서 제공하는 오픈 API 데이터들을 가지고 와서 보여줍니다.
 + JSON
 
 📌 SQLite
 
 원하는 영화를 담기 기능을 통해 저장할 수 있습니다.
+
+📌 RecyclerView
 
 ✔ **관련 이미지**
 
