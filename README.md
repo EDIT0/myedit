@@ -8,27 +8,24 @@
 > ######    • 검색창으로부터 영화 검색이 가능합니다.
 > ######    • 영화 선택 시 포스터, 평점, 출시일, 줄거리 등을 제공해줍니다.
 
+### ✔ **제작인원: 1명**
 
-✔ **프로젝트를 진행한 계기**
+### ✔ **프로젝트를 진행한 계기**
+######    • ViewModel, DataBinding 공부를 하며 RecyclerView에 DataBinding을 적용해 보고자 하여 간단하게 만들어 본 프로젝트
 
-1. ViewModel, DataBinding 공부를 하며 RecyclerView에 DataBinding을 적용해 보고자 하여 간단하게 만들어 본 프로젝트
+### ✔ **오픈 API 제공**
+######    • The Movie DB (https://developers.themoviedb.org/3/getting-started/introduction)
 
-✔ **오픈 API 제공**
+### ✔ **기술**
 
-The Movie DB (https://developers.themoviedb.org/3/getting-started/introduction)
+#### 📌 ViewModel, DataBinding, BindingAdapter
+> ######    • XML에 데이터를 지정해주어서 직접 데이터 값을 적용해주지 않아도 ViewModel을 통해 데이터를 전달해줍니다. 
+> ######    • BindingAdapter를 통해 원하는 기능의 메소드를 만들어 적용해줄 수 있습니다.
 
-✔ **기술**
+#### 📌 Retrofit
+######    • TMDB에서 제공해주는 오픈 API에서 데이터를 가져오기 위한 통신을 담당합니다.
 
-📌 ViewModel, DataBinding, BindingAdapter
-
-XML에 데이터를 지정해주어서 직접 데이터 값을 적용해주지 않아도 ViewModel을 통해 데이터를 전달해줍니다.
-BindingAdapter를 통해 원하는 기능의 메소드를 만들어 적용해줄 수 있습니다.
-
-📌 Retrofit
-
-TMDB에서 제공해주는 오픈 API에서 데이터를 가져오기 위한 통신을 담당합니다.
-
-📌 RecyclerView
+#### 📌 RecyclerView
 
 ✔ **느낀점**
 
