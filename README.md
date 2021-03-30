@@ -3,7 +3,11 @@
 
 **1.**
 
-✔ **제목: Film Finder (영화 검색 기능 제공 앱)** (폴더명: k_bindingAdapter_RecyclerView3) (Kotlin)
+## 🎈 **영화 검색 기능 제공 앱 (Film Finder)**
+> ######    • (폴더명: k_bindingAdapter_RecyclerView3) (Kotlin)
+> ######    • 검색창으로부터 영화 검색이 가능합니다.
+> ######    • 영화 선택 시 포스터, 평점, 출시일, 줄거리 등을 제공해줍니다.
+
 
 검색창으로부터 영화 검색이 가능하며, 영화 선택 시 포스터, 평점, 출시일, 줄거리 등을 제공해줍니다.
 
