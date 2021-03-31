@@ -1,7 +1,6 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.data;
 
-public class weekend_list {
-
+public class korea_movie_list {
     private String showRange;
     private String rank;
     private String rankInten;
@@ -52,8 +51,6 @@ public class weekend_list {
     public String get_movieCd() {
         return movieCd;
     }
-
-
 
     //------------------------------------------------------------
 

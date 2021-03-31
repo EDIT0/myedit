@@ -1,4 +1,4 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

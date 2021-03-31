@@ -1,6 +1,6 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.data;
 
-public class commercial_list {
+public class weekend_list {
 
     private String showRange;
     private String rank;

@@ -1,14 +1,11 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +14,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.data.korea_movie_list;
+import com.android.project1_searchmovie.ui.movie_info;
+import com.android.project1_searchmovie.db.myDBHelper;
+
 import java.util.ArrayList;
 
-public class weekday_adapter extends RecyclerView.Adapter<weekday_adapter.ViewHolder> {
+public class korea_movie_adapter extends RecyclerView.Adapter<korea_movie_adapter.ViewHolder> {
 
-    ArrayList<weekday_list> list = null;
+    ArrayList<korea_movie_list> list = null;
     private Activity context = null;
 
-    public weekday_adapter(Activity context, ArrayList<weekday_list> list) {
+    public korea_movie_adapter(Activity context, ArrayList<korea_movie_list> list) {
         this.context = context;
         this.list = list;
 
@@ -52,7 +54,7 @@ public class weekday_adapter extends RecyclerView.Adapter<weekday_adapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.activity_weekday_adapter, parent, false);
+        View itemView = inflater.inflate(R.layout.activity_korea_movie_adapter, parent, false);
 
         return new ViewHolder(itemView);
     }
@@ -95,6 +97,7 @@ public class weekday_adapter extends RecyclerView.Adapter<weekday_adapter.ViewHo
                     Toast.makeText(context,"이미 담아둔 영화입니다.",Toast.LENGTH_SHORT).show();
                 }
                 sqlDB.close();
+                //Toast.makeText(context, "입력됨", Toast.LENGTH_SHORT).show();
 
             }
         });

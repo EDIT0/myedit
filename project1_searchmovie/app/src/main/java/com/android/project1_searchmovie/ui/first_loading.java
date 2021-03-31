@@ -1,10 +1,12 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.android.project1_searchmovie.R;
 
 public class first_loading extends Activity {
 

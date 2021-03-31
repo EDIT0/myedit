@@ -1,33 +1,32 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.ui.movie_info;
+import com.android.project1_searchmovie.db.myDBHelper;
+import com.android.project1_searchmovie.data.weekend_list;
+
 import java.util.ArrayList;
 
-public class independent_adapter extends RecyclerView.Adapter<independent_adapter.ViewHolder> {
+public class weekend_adapter extends RecyclerView.Adapter<weekend_adapter.ViewHolder> {
 
-    ArrayList<independent_list> list = null;
+    ArrayList<weekend_list> list = null;
     private Activity context = null;
 
-    public independent_adapter(Activity context, ArrayList<independent_list> list) {
+    public weekend_adapter(Activity context, ArrayList<weekend_list> list) {
         this.context = context;
         this.list = list;
 
@@ -55,7 +54,7 @@ public class independent_adapter extends RecyclerView.Adapter<independent_adapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.activity_independent_adapter, parent, false);
+        View itemView = inflater.inflate(R.layout.activity_weekend_adapter, parent, false);
 
         return new ViewHolder(itemView);
     }

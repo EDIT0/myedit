@@ -1,14 +1,11 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +14,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.data.foreign_movie_list;
+import com.android.project1_searchmovie.ui.movie_info;
+import com.android.project1_searchmovie.db.myDBHelper;
+
 import java.util.ArrayList;
 
-public class korea_movie_adapter extends RecyclerView.Adapter<korea_movie_adapter.ViewHolder> {
+public class foreign_movie_adapter extends RecyclerView.Adapter<foreign_movie_adapter.ViewHolder> {
 
-    ArrayList<korea_movie_list> list = null;
+    ArrayList<foreign_movie_list> list = null;
     private Activity context = null;
 
-    public korea_movie_adapter(Activity context, ArrayList<korea_movie_list> list) {
+    public foreign_movie_adapter(Activity context, ArrayList<foreign_movie_list> list) {
         this.context = context;
         this.list = list;
 
@@ -52,7 +54,7 @@ public class korea_movie_adapter extends RecyclerView.Adapter<korea_movie_adapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.activity_korea_movie_adapter, parent, false);
+        View itemView = inflater.inflate(R.layout.activity_foreign_movie_adapter, parent, false);
 
         return new ViewHolder(itemView);
     }

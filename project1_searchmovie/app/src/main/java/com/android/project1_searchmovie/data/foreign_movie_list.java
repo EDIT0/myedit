@@ -1,6 +1,7 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.data;
 
-public class korea_movie_list {
+public class foreign_movie_list {
+
     private String showRange;
     private String rank;
     private String rankInten;

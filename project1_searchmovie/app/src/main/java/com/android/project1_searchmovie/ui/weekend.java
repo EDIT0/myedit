@@ -1,4 +1,4 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.ui;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.adapter.weekend_adapter;
+import com.android.project1_searchmovie.data.weekend_list;
+
 import java.util.ArrayList;
 
 public class weekend extends Fragment {

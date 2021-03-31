@@ -1,37 +1,37 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.ui.movie_info;
+import com.android.project1_searchmovie.db.myDBHelper;
+import com.android.project1_searchmovie.data.weekday_list;
+
 import java.util.ArrayList;
 
-public class commercial_adapter extends RecyclerView.Adapter<commercial_adapter.ViewHolder> {
+public class weekday_adapter extends RecyclerView.Adapter<weekday_adapter.ViewHolder> {
 
-    ArrayList<commercial_list> list = null;
+    ArrayList<weekday_list> list = null;
     private Activity context = null;
 
-    public commercial_adapter(Activity context, ArrayList<commercial_list> list) {
+    public weekday_adapter(Activity context, ArrayList<weekday_list> list) {
         this.context = context;
         this.list = list;
 
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         private final LinearLayout linearlayout1;
@@ -54,7 +54,7 @@ public class commercial_adapter extends RecyclerView.Adapter<commercial_adapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.activity_commercial_adapter, parent, false);
+        View itemView = inflater.inflate(R.layout.activity_weekday_adapter, parent, false);
 
         return new ViewHolder(itemView);
     }
@@ -97,7 +97,6 @@ public class commercial_adapter extends RecyclerView.Adapter<commercial_adapter.
                     Toast.makeText(context,"이미 담아둔 영화입니다.",Toast.LENGTH_SHORT).show();
                 }
                 sqlDB.close();
-                //Toast.makeText(context, "입력됨", Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -1,29 +1,44 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.ui;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.adapter.foreign_movie_adapter;
+import com.android.project1_searchmovie.data.foreign_movie_list;
+
 import java.util.ArrayList;
 
-public class independent extends Fragment {
+public class foreign_movie extends Fragment {
 
     ViewGroup rootView;
-    public static ArrayList<independent_list> list_array = new ArrayList<>();
+
+    public static ArrayList<foreign_movie_list> list_array = new ArrayList<>();
+
     RecyclerView rv;
-    public static independent_adapter d_adapter;
+    public static foreign_movie_adapter d_adapter;
+
+    Button b1;
+
+    String date;
+
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = (ViewGroup) inflater.inflate(R.layout.activity_independent, container, false);
+        rootView = (ViewGroup) inflater.inflate(R.layout.activity_foreign_movie, container, false);
 
-        independent_adapter da = new independent_adapter(getActivity(), list_array);
+        foreign_movie_adapter da = new foreign_movie_adapter(getActivity(), list_array);
         //Toast.makeText(getActivity(), ""+da.getItemCount(),Toast.LENGTH_SHORT).show();
 
         rv = rootView.findViewById(R.id.recycler);
-        d_adapter = new independent_adapter(getActivity(), list_array);
+        d_adapter = new foreign_movie_adapter(getActivity(), list_array);
 
         //리사이클러뷰에 레이아웃 매니저 설정
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);

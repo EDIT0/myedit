@@ -1,6 +1,6 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.data;
 
-public class data_list {
+public class commercial_list {
 
     private String showRange;
     private String rank;
@@ -96,16 +96,4 @@ public class data_list {
     public void set_movieCd(String list_data10) {
         this.movieCd = list_data10;
     }
-
-
-
-    /*showRange 박스오피스 조회 일자를 출력합니다.
-    rank 해당일자의 박스오피스 순위를 출력합니다.
-    rankInten 전일대비 순위의 증감분을 출력합니다.
-            movieNm 영화명(국문)을 출력합니다.
-    openDt 영화의 개봉일을 출력합니다.
-    audiCnt 해당일의 관객수를 출력합니다.
-    audiInten 전일 대비 관객수 증감분을 출력합니다.
-    audiAcc 누적관객수를 출력합니다.
-    showCnt 해당일자에 상영된 횟수를 출력합니다.*/
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#ffffff"
     android:layout_height="100dp"
-    tools:context=".independent_adapter"
+    tools:context=".adapter.independent_adapter"
     android:id="@+id/linearlayout1"
     android:layout_margin="2dp">
 

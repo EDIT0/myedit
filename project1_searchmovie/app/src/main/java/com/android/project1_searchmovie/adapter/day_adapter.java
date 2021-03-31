@@ -1,33 +1,33 @@
-package com.android.project1_searchmovie;
+package com.android.project1_searchmovie.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.android.project1_searchmovie.R;
+import com.android.project1_searchmovie.data.data_list;
+import com.android.project1_searchmovie.ui.movie_info;
+import com.android.project1_searchmovie.db.myDBHelper;
 
 import java.util.ArrayList;
 
-public class weekend_adapter extends RecyclerView.Adapter<weekend_adapter.ViewHolder> {
+public class day_adapter extends RecyclerView.Adapter<day_adapter.ViewHolder> {
 
-    ArrayList<weekend_list> list = null;
+    ArrayList<data_list> list = null;
     private Activity context = null;
 
-    public weekend_adapter(Activity context, ArrayList<weekend_list> list) {
+    public day_adapter(Activity context, ArrayList<data_list> list) {
         this.context = context;
         this.list = list;
 
@@ -55,7 +55,7 @@ public class weekend_adapter extends RecyclerView.Adapter<weekend_adapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.activity_weekend_adapter, parent, false);
+        View itemView = inflater.inflate(R.layout.activity_day_adapter, parent, false);
 
         return new ViewHolder(itemView);
     }
@@ -94,8 +94,35 @@ public class weekend_adapter extends RecyclerView.Adapter<weekend_adapter.ViewHo
                 sqlDB = myHelper.getWritableDatabase();
                 try {
                     sqlDB.execSQL("INSERT INTO my_pocket VALUES ( '" + holder.tv1.getText().toString() + "', '" + holder.tv2.getText().toString() + "');");
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("알림");
+                    builder.setMessage("담기 성공!");
+                    builder.setIcon(R.drawable.ic_launcher_foreground);
+
+                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+
+                    builder.show();
                 }catch (Exception e){
-                    Toast.makeText(context,"이미 담아둔 영화입니다.",Toast.LENGTH_SHORT).show();
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("알림");
+                    builder.setMessage("이미 가지고 있습니다!");
+                    builder.setIcon(R.drawable.ic_launcher_foreground);
+
+                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+
+                    builder.show();
                 }
                 sqlDB.close();
                 //Toast.makeText(context, "입력됨", Toast.LENGTH_SHORT).show();
