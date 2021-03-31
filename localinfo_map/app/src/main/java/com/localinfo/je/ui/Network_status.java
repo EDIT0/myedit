@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

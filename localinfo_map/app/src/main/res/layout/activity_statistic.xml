@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".statistic"
+    tools:context=".ui.statistic"
     android:orientation="vertical"
     android:background="#f4f5f9"> <!--#CED0D6-->
     

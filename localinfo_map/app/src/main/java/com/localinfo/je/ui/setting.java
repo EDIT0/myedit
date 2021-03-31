@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import androidx.fragment.app.Fragment;
 
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.localinfo.je.R;
 
 public class setting extends Fragment {
 
@@ -24,7 +26,7 @@ public class setting extends Fragment {
         change_range.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),Range_change.class);
+                Intent intent = new Intent(getActivity(), Range_change.class);
                 startActivity(intent);
             }
         });

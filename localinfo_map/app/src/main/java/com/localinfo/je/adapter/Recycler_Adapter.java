@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.localinfo.je.R;
+import com.localinfo.je.data.notice_items;
+import com.localinfo.je.ui.notice_content;
 
 import java.util.ArrayList;
 
@@ -57,9 +61,9 @@ public class Recycler_Adapter extends RecyclerView.Adapter<Recycler_Adapter.View
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, notice_content.class);
-                intent.putExtra("title",list_array.get(position).title);
-                intent.putExtra("content",list_array.get(position).content);
-                intent.putExtra("date",list_array.get(position).date);
+                intent.putExtra("title",list_array.get(position).getTitle());
+                intent.putExtra("content",list_array.get(position).getContent());
+                intent.putExtra("date",list_array.get(position).getDate());
                 context.startActivity(intent);
             }
         });

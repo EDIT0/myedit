@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

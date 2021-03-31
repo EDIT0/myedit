@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    tools:context=".Recycler_Adapter"
+    tools:context=".adapter.Recycler_Adapter"
     android:gravity="center_vertical"
     android:id="@+id/relativelayout"
     android:background="#ffffff">

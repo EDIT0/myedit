@@ -17,11 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/custom_style"
         android:usesCleartextTraffic="true">
-        <activity android:name=".User_guide"></activity>
-        <activity android:name=".Marker_detail" />
-        <activity android:name=".Loading_logo" />
-        <activity android:name=".Range_change" />
-        <activity android:name=".notice_content" />
+        <activity android:name=".ui.User_guide"></activity>
+        <activity android:name=".ui.Marker_detail" />
+        <activity android:name=".ui.Loading_logo" />
+        <activity android:name=".ui.Range_change" />
+        <activity android:name=".ui.notice_content" />
         <!--
 <activity android:name=".Recycler_Adapter" />
         <activity android:name=".setting" />
@@ -30,7 +30,7 @@
         <activity android:name=".statistic" />
         -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait"> <!-- 세로 고정 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

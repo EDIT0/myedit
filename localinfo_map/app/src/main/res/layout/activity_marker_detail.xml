@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Marker_detail"
+    tools:context=".ui.Marker_detail"
     android:orientation="vertical">
 
     <ScrollView

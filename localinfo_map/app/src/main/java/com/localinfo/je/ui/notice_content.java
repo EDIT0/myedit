@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.localinfo.je.R;
 
 public class notice_content extends AppCompatActivity {
 

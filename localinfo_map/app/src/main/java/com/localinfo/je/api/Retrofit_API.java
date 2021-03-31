@@ -1,4 +1,10 @@
-package com.localinfo.je;
+package com.localinfo.je.api;
+
+import com.localinfo.je.data.Keyword_Result;
+import com.localinfo.je.data.address_itmes;
+import com.localinfo.je.data.notice_items;
+import com.localinfo.je.data.search_address_Result_for_statistic;
+import com.localinfo.je.data.statistic_items;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

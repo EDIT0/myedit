@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,6 +26,11 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.localinfo.je.R;
+import com.localinfo.je.api.Retrofit_API;
+import com.localinfo.je.data.Keyword_Items;
+import com.localinfo.je.data.Keyword_Result;
+import com.localinfo.je.data.statistic_items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +41,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.localinfo.je.map.base_url;
-import static com.localinfo.je.map.current_location_lat;
-import static com.localinfo.je.map.current_location_long;
-import static com.localinfo.je.map.region_type_depth_dong;
-import static com.localinfo.je.map.region_type_depth_gu;
-import static com.localinfo.je.map.region_type_depth_si;
-import static com.localinfo.je.map.rest_api_key;
+import static com.localinfo.je.ui.map.base_url;
+import static com.localinfo.je.ui.map.current_location_lat;
+import static com.localinfo.je.ui.map.current_location_long;
+import static com.localinfo.je.ui.map.region_type_depth_dong;
+import static com.localinfo.je.ui.map.region_type_depth_gu;
+import static com.localinfo.je.ui.map.region_type_depth_si;
+import static com.localinfo.je.ui.map.rest_api_key;
 
 public class statistic extends Fragment {
     final String TAG = "statistic";

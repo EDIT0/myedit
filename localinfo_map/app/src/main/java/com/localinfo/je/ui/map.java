@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +29,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.localinfo.je.R;
+import com.localinfo.je.api.Retrofit_API;
+import com.localinfo.je.data.Keyword_Items;
+import com.localinfo.je.data.Keyword_Result;
+import com.localinfo.je.data.address_itmes;
 import com.pedro.library.AutoPermissions;
 import com.pedro.library.AutoPermissionsListener;
 

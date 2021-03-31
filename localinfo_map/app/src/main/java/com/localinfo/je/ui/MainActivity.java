@@ -1,4 +1,4 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -14,6 +14,10 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.localinfo.je.R;
+import com.localinfo.je.api.Retrofit_API;
+import com.localinfo.je.data.notice_items;
+import com.localinfo.je.data.search_address_Result_for_statistic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < items.size(); i++) {
                         notice_items.items temp = items.get(i);
                         notice.notice_list_array.add(temp);
-                        Log.i(TAG,temp.title + " / " + temp.content + " / " + temp.date);
+                        //Log.i(TAG,temp.title + " / " + temp.content + " / " + temp.date);
                     }
 
 

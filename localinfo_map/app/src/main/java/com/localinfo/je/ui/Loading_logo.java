@@ -1,9 +1,11 @@
-package com.localinfo.je;
+package com.localinfo.je.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.localinfo.je.R;
 
 public class Loading_logo extends AppCompatActivity {
 
