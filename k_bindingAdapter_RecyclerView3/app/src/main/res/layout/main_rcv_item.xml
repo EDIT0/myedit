@@ -24,7 +24,7 @@
                 android:layout_height="120dp"
                 android:scaleType="fitXY"
                 main_rcv_image="@{movieinfomodel.poster_path}"
-                error="@{@drawable/ic_launcher_foreground}"/>
+                error="@{@drawable/error}"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
