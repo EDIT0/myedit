@@ -112,6 +112,8 @@ public class BackgroundService extends IntentService implements BackgroundResult
                                 notificationManager.notify(0,builder.build());
                                 powerManager = (PowerManager)getSystemService(Context.POWER_SERVICE);
 
+                                Log.i("tag","세탁이 동작 중");
+
                                 wakeLock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "WAKELOCK");
                                 wakeLock.acquire();
 
