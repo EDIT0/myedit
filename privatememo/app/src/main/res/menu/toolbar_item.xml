@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@android:drawable/ic_media_play"
+        android:title="메모"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:id="@+id/toolbar_item_memo"/>
+
+    <item
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="검색"
+        app:showAsAction="ifRoom"
+        android:id="@+id/toolbar_item_search"/>
+
+    <item
+        android:icon="@android:drawable/ic_popup_reminder"
+        android:title="달력"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:id="@+id/toolbar_item_calendar"/>
+
+    <item
+        android:icon="@android:drawable/ic_popup_reminder"
+        android:title="설정"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:id="@+id/toolbar_item_setting"/>
+
+</menu>

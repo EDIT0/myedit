@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Privatememo">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.OnlyPicFragment"></activity>
+        <activity android:name=".ui.CategoryFragment" />
+        <activity android:name=".ui.SettingFragment" />
+        <activity android:name=".ui.CalendarFragment" />
+        <activity android:name=".ui.SearchFragment" />
+        <activity android:name=".ui.MemoFragment" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
